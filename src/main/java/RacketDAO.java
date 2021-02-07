@@ -25,8 +25,8 @@ public class RacketDAO {
             c.setIdClient(rs.getInt("idClient"));
             c.setImieNazwisko(rs.getString("ImieNazwisko"));
             c.setAdres(rs.getString("adres"));
-            c.setMobile_number(rs.getInt("mobile_number"));
             c.setEmail(rs.getString("email"));
+            c.setMobile_number(rs.getInt("mobile_number"));
 
             clientList.add(c);
             //clientList.add(a);
@@ -167,7 +167,7 @@ public class RacketDAO {
 
     }
 /*
-    public void insertRacket(String name) throws SQLException, ClassNotFoundException {
+    public void insertClient(String name) throws SQLException, ClassNotFoundException {
 
         StringBuilder sb = new StringBuilder("INSERT INTO rackets(model) VALUES('");
         sb.append(name);
@@ -188,13 +188,19 @@ public class RacketDAO {
 
  */
 
+
+
     public void insertClient(String id, String imieNazwisko, String adres, String email,String number ) throws SQLException, ClassNotFoundException {
 
         StringBuilder sb = new StringBuilder("INSERT INTO clients VALUES('");
         sb.append(id);
+        sb.append("','");
         sb.append(imieNazwisko);
+        sb.append("','");
         sb.append(adres);
+        sb.append("','");
         sb.append(email);
+        sb.append("','");
         sb.append(number);
         sb.append("');");
         String insertStmt = sb.toString();

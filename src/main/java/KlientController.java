@@ -108,7 +108,7 @@ public class KlientController {
 
             if (!IdName.getText().equals(null)) {
                 racketDAO.insertClient(IDText.getText(), IdName.getText(), idAdres.getText(), idEmail.getText(), idTelNum.getText());
-                consoleTextArea.appendText("New Racket " + IdName.getText() + " inserted." + "\n");
+                consoleTextArea.appendText("New Client " + IdName.getText() + " inserted." + "\n");
 
             }
         } catch (SQLException | ClassNotFoundException e) {

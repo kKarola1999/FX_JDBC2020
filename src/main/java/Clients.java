@@ -5,15 +5,15 @@ public class Clients {
     private IntegerProperty idClient;
     private StringProperty ImieNazwisko;
     private StringProperty adres;
-    private IntegerProperty mobile_number;
     private StringProperty email;
+    private IntegerProperty mobile_number;
 
     public Clients() {
         idClient = new SimpleIntegerProperty();
         ImieNazwisko = new SimpleStringProperty();
         adres = new SimpleStringProperty();
-        mobile_number = new SimpleIntegerProperty();
         email = new SimpleStringProperty();
+        mobile_number = new SimpleIntegerProperty();
     }
 
     public int getIdClient() {
