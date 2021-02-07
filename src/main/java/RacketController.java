@@ -1,3 +1,4 @@
+import controller.DBUtil;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -131,22 +132,21 @@ public class RacketController {
 
     @FXML
     void selectRacketButtonPressed(ActionEvent event) throws SQLException, ClassNotFoundException {
-/*
+
         try {
 
-            if (!selectRacketNameTextField.getText().equals(null)) {
+            clientsTable.getItems().clear();
+            ObservableList<Statystyka> statystykaData = racketDAO.showAllZysk();
+            populateZysk(statystykaData);
 
-                racketTable.getItems().clear();
-                ObservableList<Racket> wineData = racketDAO.searchRackets(selectRacketNameTextField.getText());
-                populateRackets(wineData);
-//
-            }
         } catch (SQLException e) {
-            consoleTextArea.appendText("Error occurred while getting wines from DB.\n");
+            consoleTextArea.appendText("Error occurred while getting rackets from DB.\n");
             throw e;
         }
-*/
+
     }
+
+
 
 
 
@@ -169,6 +169,12 @@ public class RacketController {
     private void populateRackets(ObservableList<Clients> racketData) {
         clientsTable.setItems(racketData);
     }
+
+    private void populateZysk(ObservableList<Statystyka> statystykaData) {
+        clientsTable.setItems(statystykaData);
+    }
+
+
 
     @FXML
         // This method is called by the FXMLLoader when initialization is complete

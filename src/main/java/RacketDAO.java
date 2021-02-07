@@ -1,3 +1,4 @@
+import controller.DBUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TextArea;
@@ -32,6 +33,25 @@ public class RacketDAO {
         }
 
         return clientList;
+    }
+    private ObservableList<Statystyka> getStatystykaList(ResultSet rs) throws SQLException {
+
+        ObservableList<Statystyka> statystykaList = FXCollections.observableArrayList();
+
+        while (rs.next()) {
+
+            Statystyka s = new Statystyka();
+            s.setIdAutomatNad(rs.getInt("idAutomatNad"));
+            s.setSend_date(rs.getString("send_date"));
+            s.setZysk_paczki(rs.getDouble("zysk_paczki"));
+
+
+
+            statystykaList.add(s);
+            //clientList.add(a);
+        }
+
+        return statystykaList;
     }
 
 
@@ -68,6 +88,27 @@ public class RacketDAO {
             ResultSet resultSet = dbUtil.dbExecuteQuery(selectStmt);
 
             ObservableList<Clients> clientList = getClientsList(resultSet);
+            consoleTextArea.appendText(selectStmt);
+
+            return clientList;
+
+
+        } catch (SQLException e) {
+            consoleTextArea.appendText("While searching rackets, an error occurred. \n");
+            throw e;
+        }
+
+    }
+
+    public ObservableList<Statystyka> showAllZysk() throws SQLException, ClassNotFoundException {
+
+        String selectStmt = "SELECT * FROM statystyka;";
+
+        try {
+
+            ResultSet resultSet = dbUtil.dbExecuteQuery(selectStmt);
+
+            ObservableList<Statystyka> clientList = getStatystykaList(resultSet);
             consoleTextArea.appendText(selectStmt);
 
             return clientList;

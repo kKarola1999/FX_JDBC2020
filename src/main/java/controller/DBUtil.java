@@ -1,3 +1,6 @@
+package controller;
+
+import com.github.vldrus.sql.rowset.CachedRowSetWrapper;
 import javafx.scene.control.TextArea;
 import java.sql.*;
 import javax.sql.rowset.CachedRowSet;

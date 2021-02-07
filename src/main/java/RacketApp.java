@@ -12,20 +12,12 @@ public class RacketApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        scene = new Scene(loadFXML("dbFX"), 800, 600);
-        stage.setScene(scene);
-        stage.setTitle("Client App");
-        stage.show();
-    }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RacketApp.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
+            Parent root = FXMLLoader.load(getClass().getResource("start.fxml"));
+            Scene scene = new Scene(root, 500,300 );
+            stage.setScene(scene);
+            stage.show();
+        }
 
     public static void main(String[] args) {
         launch();
