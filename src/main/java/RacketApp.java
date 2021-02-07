@@ -23,3 +23,6 @@ public class RacketApp extends Application {
         launch();
     }
 }
+ // todo widok odbiorcy dla klienta-select*from widok odbiorcy where idklienta=idklienta, ktory sie zalogowal
+//todo widok nadawcy dla klienta-select*from widok odbiorcy where idklienta=idklienta, ktory sie zalogowal
+// todo podglad paczek odebranych, nadanych-widok paczki-select*from widok_paczek where status=send and pickup
