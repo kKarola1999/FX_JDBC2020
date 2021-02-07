@@ -48,7 +48,7 @@ public class RacketController {
 
     @FXML // fx:id="racketTable"
     private TableView clientsTable; // Value injected by FXMLLoader
-
+/*
     @FXML
     private TableColumn<Racket, String> nameCol;
 
@@ -66,7 +66,7 @@ public class RacketController {
 
     @FXML
     private TableColumn<Racket, String> priceUSDCol;
-
+*/
     private DBUtil dbUtil;
     private RacketDAO racketDAO;
 
@@ -190,14 +190,14 @@ public class RacketController {
         assert selectRacketButton != null : "fx:id=\"selectRacketButton\" was not injected: check your FXML file 'dbFX.fxml'.";
         assert showRacketsButton != null : "fx:id=\"showRacketsButton\" was not injected: check your FXML file 'dbFX.fxml'.";
         assert clientsTable != null : "fx:id=\"racketTable\" was not injected: check your FXML file 'dbFX.fxml'.";
-
+/*
         assert nameCol != null : "fx:id=\"nameCol\" was not injected: check your FXML file 'dbFX.fxml'.";
         assert manufacturerCol != null : "fx:id=\"manufacturerCol\" was not injected: check your FXML file 'dbFX.fxml'.";
         assert massCol != null : "fx:id=\"massCol\" was not injected: check your FXML file 'dbFX.fxml'.";
         assert headSizeCol != null : "fx:id=\"headSizeCol\" was not injected: check your FXML file 'dbFX.fxml'.";
         assert dominantColorCol != null : "fx:id=\"dominantColorCol\" was not injected: check your FXML file 'dbFX.fxml'.";
         assert priceUSDCol != null : "fx:id=\"priceUSDCol\" was not injected: check your FXML file 'dbFX.fxml'.";
-
+*/
 
     }
 

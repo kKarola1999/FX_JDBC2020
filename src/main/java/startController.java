@@ -28,7 +28,8 @@ public class startController {
         void onFirmaButton(ActionEvent event) {
             Parent root;
             try {
-                root = FXMLLoader.load(getClass().getClassLoader().getResource("dbFX.fxml"), resources);
+
+                root = FXMLLoader.load(getClass().getClassLoader().getResource("FirmaView.fxml"), resources);
                 Stage stage = new Stage();
                 stage.setTitle("Firma");
                 stage.setScene(new Scene(root, 800, 600));
@@ -45,6 +46,19 @@ public class startController {
 
         @FXML
         void onKlientButton(ActionEvent event) {
+            Parent root;
+            try {
+                root = FXMLLoader.load(getClass().getClassLoader().getResource("dbFX.fxml"), resources);
+                Stage stage = new Stage();
+                stage.setTitle("Klient");
+                stage.setScene(new Scene(root, 800, 600));
+                stage.show();
+                // Hide this current window (if this is what you want)
+                ((Node)(event.getSource())).getScene().getWindow().hide();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
 
         }
 

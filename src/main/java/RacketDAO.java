@@ -54,6 +54,31 @@ public class RacketDAO {
         return statystykaList;
     }
 
+    private ObservableList<PackagesView> getPackagesList(ResultSet rs) throws SQLException {
+
+        ObservableList<PackagesView> packageList = FXCollections.observableArrayList();
+
+        while (rs.next()) {
+
+            PackagesView p = new PackagesView();
+            p.setIdPackages(rs.getInt("id_paczki"));
+            p.setStatus(rs.getString("status_paczki"));
+            p.setSize(rs.getString("rozmiarPaczki"));
+            p.setSend_date(rs.getString("dataWysłania"));
+            p.setData_arrive(rs.getString("dataDostawy"));
+            p.setData_end(rs.getString("ostatecznaDataOdebraniaPaczki"));
+            p.setIdAutomatNad(rs.getInt("id_automatu_nadawczego"));
+            p.setIdAutomatOdb(rs.getInt("id_automatu_odbioreczego"));
+            p.setPickup_date(rs.getString("dataOdebrania"));
+
+
+
+            packageList.add(p);
+        //clientList.add(a);
+        }
+
+        return packageList;
+    }
 
 /*
     public ObservableList<Racket> searchRackets(String manuf) throws SQLException, ClassNotFoundException {
@@ -120,6 +145,27 @@ public class RacketDAO {
         }
 
     }
+
+    public ObservableList<PackagesView> showAllPackagesView() throws SQLException, ClassNotFoundException {
+
+        String selectStmt = "SELECT * FROM widok_paczek;";
+
+        try {
+
+            ResultSet resultSet = dbUtil.dbExecuteQuery(selectStmt);
+
+            ObservableList<PackagesView> packagesList = getPackagesList(resultSet);
+            consoleTextArea.appendText(selectStmt);
+
+            return packagesList;
+
+
+        } catch (SQLException e) {
+            consoleTextArea.appendText("While searching rackets, an error occurred. \n");
+            throw e;
+        }
+
+    }
 /*
     public void insertRacket(String name) throws SQLException, ClassNotFoundException {
 
@@ -141,6 +187,30 @@ public class RacketDAO {
     }
 
  */
+
+    public void insertClient(String id, String imieNazwisko, String adres, String email,String number ) throws SQLException, ClassNotFoundException {
+
+        StringBuilder sb = new StringBuilder("INSERT INTO clients VALUES('");
+        sb.append(id);
+        sb.append(imieNazwisko);
+        sb.append(adres);
+        sb.append(email);
+        sb.append(number);
+        sb.append("');");
+        String insertStmt = sb.toString();
+
+        try {
+
+            dbUtil.dbExecuteUpdate(insertStmt);
+            consoleTextArea.appendText(insertStmt + "\n");
+
+        } catch (SQLException e) {
+            consoleTextArea.appendText("Error occurred while INSERT Operation.");
+            throw e;
+        }
+
+    }
+
 
 
 }
