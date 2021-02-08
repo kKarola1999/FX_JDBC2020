@@ -11,7 +11,7 @@ public class RacketApp extends Application {
     private static Scene scene;
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) throws IOException {
 
             Parent root = FXMLLoader.load(getClass().getResource("start.fxml"));
             Scene scene = new Scene(root, 500,300 );

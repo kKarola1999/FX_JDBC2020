@@ -1,7 +1,4 @@
 import com.sun.rowset.CachedRowSetImpl;
-//import com.sun.rowset.*;
-
-import javax.sql.rowset.*;
 
 import javax.sql.RowSet;
 import javax.sql.RowSetEvent;
@@ -21,6 +18,8 @@ import java.sql.*;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Map;
+
+//import com.sun.rowset.*;
 
 /**
  * A simple {@link CachedRowSet} wrapper.
@@ -1865,4 +1864,4 @@ public class CachedRowSetWrapper implements CachedRowSet, Serializable {
                 "internalRowSet=" + internalRowSet +
                 '}';
     }
-}
+    }

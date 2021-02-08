@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SignInController">
+    <children>
+        <SplitPane prefHeight="400.0" prefWidth="237.0">
+            <items>
+                <VBox prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <TextField fx:id="idInput" promptText="ID " />
+                        <TextField fx:id="ImieInput" promptText="Imie i nazwisko" />
+                        <TextField fx:id="AdresInput" promptText="Adres" />
+                        <TextField fx:id="emailInput" promptText="Email" />
+                        <TextField fx:id="nrKontInput" promptText="Numer kontaktowy" />
+                        <Button fx:id="signInBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onBtnSingIn" text="Sign in" />
+                    </children>
+                </VBox>
+            </items>
+        </SplitPane>
+        <ImageView fx:id="imageSignInView" fitHeight="357.0" fitWidth="252.0" layoutX="299.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" />
+    </children>
+</AnchorPane>

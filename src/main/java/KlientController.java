@@ -1,17 +1,20 @@
+import controller.DBUtil;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Handler;
-
-import controller.DBUtil;
-
-import controller.DBUtil;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 
 public class KlientController {
 
@@ -31,31 +34,82 @@ public class KlientController {
     private Button connectButton;
 
     @FXML
+    private Button btnSignIn;
+
+    @FXML
     private Button disconnectButton;
 
     @FXML
     private TextArea consoleTextArea;
 
     @FXML
-    private TextField IDText;
+    private ImageView imageCilentView;
 
     @FXML
-    private TextField IdName;
+    private TableColumn<?, ?> colNad1;
 
     @FXML
-    private TextField idEmail;
+    private TableColumn<?, ?> colNad2;
 
     @FXML
-    private TextField idAdres;
+    private TableColumn<?, ?> colNad3;
 
     @FXML
-    private TextField idTelNum;
+    private TableColumn<?, ?> colNad4;
 
     @FXML
-    private Button idLogIn;
+    private TableColumn<?, ?> colNad5;
+
+    @FXML
+    private TableColumn<?, ?> colNad6;
+
+    @FXML
+    private TableColumn<?, ?> colNad7;
+
+    @FXML
+    private TableColumn<?, ?> colNad8;
+
+    @FXML
+    private TableColumn<?, ?> colOdb1;
+
+    @FXML
+    private TableColumn<?, ?> colOdb2;
+
+    @FXML
+    private TableColumn<?, ?> colOdb3;
+
+    @FXML
+    private TableColumn<?, ?> colOdb4;
+
+    @FXML
+    private TableColumn<?, ?> colOdb5;
+
+    @FXML
+    private TableColumn<?, ?> colOdb6;
+
+    @FXML
+    private TableColumn<?, ?> colOdb7;
+
+    @FXML
+    private TextField inputAdrOdb;
+
+    @FXML
+    private TextField inputOdbiorca;
+
+    @FXML
+    private Spinner<String> spinner;
+
+    @FXML
+    private TextField inputPaczNad;
+
+    @FXML
+    private Button btnNadajPaczke;
 
     private DBUtil dbUtil;
     private RacketDAO racketDAO;
+
+
+
 
     @FXML
     void connectButtonPressed(ActionEvent event) throws SQLException, ClassNotFoundException {
@@ -66,8 +120,22 @@ public class KlientController {
         dbUtil.dbConnect();
 
         consoleTextArea.appendText("Access granted for user \"" + userTextField.getText() + "\"." + "\n");
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("user_view.fxml"), resources);
+            Stage stage = new Stage();
+            stage.setTitle("Widok klienta");
+            stage.setScene(new Scene(root, 1000, 600));
+            stage.show();
+            // Hide this current window (if this is what you want)
+            ((Node)(event.getSource())).getScene().getWindow().hide();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
         connectButton.setDisable(true);
         disconnectButton.setDisable(false);
+
         /*
         addRacketButton.setDisable(false);
         selectRacketButton.setDisable(false);
@@ -104,20 +172,37 @@ public class KlientController {
     }
 
     @FXML
-    void onLogIn(ActionEvent event) throws SQLException, ClassNotFoundException {
-
+    void onBtnSignIn(ActionEvent event) {
+        Parent root;
         try {
-
-            if (!IdName.getText().equals(null)) {
-                racketDAO.insertClient(IDText.getText(), IdName.getText(), idAdres.getText(), idEmail.getText(), idTelNum.getText());
-                consoleTextArea.appendText("New Client " + IdName.getText() + " inserted." + "\n");
-
-            }
-        } catch (SQLException | ClassNotFoundException e) {
-            consoleTextArea.appendText("Error occurred while inserting racket.\n");
-            throw e;
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("sign_in.fxml"), resources);
+            Stage stage = new Stage();
+            stage.setTitle("Rejestracja");
+            stage.setScene(new Scene(root, 800, 600));
+            stage.show();
+            // Hide this current window (if this is what you want)
+            ((Node)(event.getSource())).getScene().getWindow().hide();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
         }
     }
+    //spiner config:
+    ObservableList<String> sizes = FXCollections.observableArrayList(
+            "S","M","XL"
+    ) ;
+    SpinnerValueFactory<String> valueFactory = new SpinnerValueFactory.ListSpinnerValueFactory<String>(sizes);
+
+    @FXML
+    void onBtnNadajPaczkę(ActionEvent event) {
+        spinner = new Spinner<String>();
+        // wartość wyjsciowa spinnera
+        valueFactory.setValue("M");
+        spinner.setValueFactory(valueFactory);
+
+
+    }
+
 
 
 
@@ -126,14 +211,29 @@ public class KlientController {
         assert userTextField != null : "fx:id=\"userTextField\" was not injected: check your FXML file 'dbFX.fxml'.";
         assert passwordTextField != null : "fx:id=\"passwordTextField\" was not injected: check your FXML file 'dbFX.fxml'.";
         assert connectButton != null : "fx:id=\"connectButton\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert btnSignIn != null : "fx:id=\"btnSignIn\" was not injected: check your FXML file 'dbFX.fxml'.";
         assert disconnectButton != null : "fx:id=\"disconnectButton\" was not injected: check your FXML file 'dbFX.fxml'.";
         assert consoleTextArea != null : "fx:id=\"consoleTextArea\" was not injected: check your FXML file 'dbFX.fxml'.";
-        assert IDText != null : "fx:id=\"IDText\" was not injected: check your FXML file 'dbFX.fxml'.";
-        assert IdName != null : "fx:id=\"IdName\" was not injected: check your FXML file 'dbFX.fxml'.";
-        assert idEmail != null : "fx:id=\"idEmail\" was not injected: check your FXML file 'dbFX.fxml'.";
-        assert idAdres != null : "fx:id=\"idAdres\" was not injected: check your FXML file 'dbFX.fxml'.";
-        assert idTelNum != null : "fx:id=\"idTelNum\" was not injected: check your FXML file 'dbFX.fxml'.";
-        assert idLogIn != null : "fx:id=\"idLogIn\" was not injected: check your FXML file 'dbFX.fxml'.";
-
+        assert imageCilentView != null : "fx:id=\"imageCilentView\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert colNad1 != null : "fx:id=\"colNad1\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert colNad2 != null : "fx:id=\"colNad2\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert colNad3 != null : "fx:id=\"colNad3\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert colNad4 != null : "fx:id=\"colNad4\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert colNad5 != null : "fx:id=\"colNad5\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert colNad6 != null : "fx:id=\"colNad6\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert colNad7 != null : "fx:id=\"colNad7\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert colNad8 != null : "fx:id=\"colNad8\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert colOdb1 != null : "fx:id=\"colOdb1\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert colOdb2 != null : "fx:id=\"colOdb2\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert colOdb3 != null : "fx:id=\"colOdb3\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert colOdb4 != null : "fx:id=\"colOdb4\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert colOdb5 != null : "fx:id=\"colOdb5\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert colOdb6 != null : "fx:id=\"colOdb6\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert colOdb7 != null : "fx:id=\"colOdb7\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert inputAdrOdb != null : "fx:id=\"inputAdrOdb\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert inputOdbiorca != null : "fx:id=\"inputOdbiorca\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert spinner != null : "fx:id=\"spinner\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert inputPaczNad != null : "fx:id=\"inputPaczNad\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert btnNadajPaczke != null : "fx:id=\"btnNadajPaczke\" was not injected: check your FXML file 'dbFX.fxml'.";
     }
-}
+    }
