@@ -129,7 +129,7 @@ public class RacketController {
         clientsTable.getItems().clear();
 
     }
-
+/*
     @FXML
     void selectRacketButtonPressed(ActionEvent event) throws SQLException, ClassNotFoundException {
 
@@ -145,6 +145,8 @@ public class RacketController {
         }
 
     }
+
+ */
 
 
 

@@ -31,7 +31,7 @@ public class startController {
                 root = FXMLLoader.load(getClass().getClassLoader().getResource("FirmaView.fxml"), resources);
                 Stage stage = new Stage();
                 stage.setTitle("Firma");
-                stage.setScene(new Scene(root, 800, 600));
+                stage.setScene(new Scene(root, 1000, 600));
                 stage.show();
                 // Hide this current window (if this is what you want)
                 ((Node)(event.getSource())).getScene().getWindow().hide();

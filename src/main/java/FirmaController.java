@@ -32,6 +32,20 @@ public class FirmaController {
 
     @FXML
     private Button disconnectButton;
+    @FXML
+    private Button sendButton;
+    @FXML
+    private TextField idSend;
+
+    @FXML
+    private TextField idTextPickup;
+
+    @FXML
+    private TextField podaiIdAutomatu;
+
+    @FXML
+    private TextField podajDate;
+
 
     @FXML
     private TextArea consoleTextArea;
@@ -85,6 +99,8 @@ public class FirmaController {
     @FXML
     private Button idPackages;
 
+    @FXML
+    private Button idPickup;
 
 
 
@@ -104,6 +120,10 @@ public class FirmaController {
         consoleTextArea.appendText("Access granted for user \"" + userTextField.getText() + "\"." + "\n");
         connectButton.setDisable(true);
         disconnectButton.setDisable(false);
+        btnStatystyka.setDisable(false);
+        idPackages.setDisable(false);
+        idPickup.setDisable(false);
+        sendButton.setDisable(false);
 
 
 
@@ -114,7 +134,11 @@ public class FirmaController {
         dbUtil.dbDisconnect();
         connectButton.setDisable(false);
         disconnectButton.setDisable(true);
-
+        disconnectButton.setDisable(true);
+        btnStatystyka.setDisable(true);
+        idPackages.setDisable(true);
+        idPickup.setDisable(true);
+        sendButton.setDisable(true);
     }
 
     @FXML
@@ -123,7 +147,7 @@ public class FirmaController {
         try {
 
             statystykaTable.getItems().clear();
-            ObservableList<Statystyka> statystykaData = racketDAO.showAllZysk();
+            ObservableList<Statystyka> statystykaData = racketDAO.showAllZysk(podajDate.getText(),podaiIdAutomatu.getText());
             populateZysk(statystykaData);
 
         } catch (SQLException | ClassNotFoundException e) {
@@ -148,7 +172,37 @@ public class FirmaController {
 
 
     }
+    @FXML
+    void onSendButtonClick(ActionEvent event) throws SQLException, ClassNotFoundException {
 
+        try {
+
+            if (!idSend.getText().equals(null)) {
+                racketDAO.updatePackages(idSend.getText());
+                consoleTextArea.appendText("Update for " + idSend.getText() + "\n");
+
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            consoleTextArea.appendText("Error occurred while inserting racket.\n");
+            throw e;
+        }
+
+    }
+    @FXML
+    void onPickupButton(ActionEvent event) throws SQLException, ClassNotFoundException {
+        try {
+
+            if (!idSend.getText().equals(null)) {
+                racketDAO.updatePackagesPickup(idTextPickup.getText());
+                consoleTextArea.appendText("Update for " + idSend.getText() + "\n");
+
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            consoleTextArea.appendText("Error occurred while inserting racket.\n");
+            throw e;
+        }
+
+    }
 
     private void populateZysk(ObservableList<Statystyka> statystykaData) {
         statystykaTable.setItems(statystykaData);
@@ -181,7 +235,15 @@ public class FirmaController {
         assert pickupDate != null : "fx:id=\"pickupDate\" was not injected: check your FXML file 'FirmaView.fxml'.";
         assert btnStatystyka != null : "fx:id=\"btnStatystyka\" was not injected: check your FXML file 'FirmaView.fxml'.";
         assert idPackages != null : "fx:id=\"idPackages\" was not injected: check your FXML file 'FirmaView.fxml'.";
-
-
+        assert sendButton != null : "fx:id=\"sendButton\" was not injected: check your FXML file 'FirmaView.fxml'.";
+        assert idPickup != null : "fx:id=\"idPickup\" was not injected: check your FXML file 'FirmaView.fxml'.";
+        assert idTextPickup != null : "fx:id=\"idTextPickup\" was not injected: check your FXML file 'FirmaView.fxml'.";
+        assert podaiIdAutomatu != null : "fx:id=\"podaiIdAutomatu\" was not injected: check your FXML file 'FirmaView.fxml'.";
+        assert podajDate != null : "fx:id=\"podajDate\" was not injected: check your FXML file 'FirmaView.fxml'.";
+        disconnectButton.setDisable(true);
+        btnStatystyka.setDisable(true);
+        idPackages.setDisable(true);
+        idPickup.setDisable(true);
+        sendButton.setDisable(true);
     }
 }
