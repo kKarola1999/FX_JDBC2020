@@ -35,18 +35,6 @@ public class RacketDAO {
         return clientList;
     }
 
-    private  ObservableList<SenderView> getSenderList(ResultSet rs) throws SQLException{
-        ObservableList<SenderView> senderList = FXCollections.observableList();
-        while (rs.next()){
-            SenderView s =  new SenderView();
-            s.setIdPaczki(rs.getInt("id_paczki"));
-            s.setDataNadania(rs.getString("data_nadania"));
-            s.setDataOdebrania(rs.getString("data_odebrania"));
-            s.setIdAutomatuNadawczego(rs.getInt("id_a_nadawcy"));
-            s.setAdresNadania(rs.getString());
-
-        }
-    }
 
     private ObservableList<Statystyka> getStatystykaList(ResultSet rs) throws SQLException {
 
@@ -92,6 +80,31 @@ public class RacketDAO {
         }
 
         return packageList;
+    }
+
+    private ObservableList<ReceiverView> getReceiverViewList(ResultSet rs) throws SQLException {
+
+        ObservableList<ReceiverView> receiverViewList = FXCollections.observableArrayList();
+
+        while (rs.next()) {
+
+            ReceiverView r = new ReceiverView();
+            r.setIdPackages(rs.getInt("id_paczki"));
+            r.setSend_date(rs.getString("data_nadania"));
+            r.setData_end(rs.getString("ostatni_termin"));
+            r.setIdClientNad(rs.getInt("nadawca"));
+            r.setAdresNadawcy(rs.getString("adres_nadawcy"));
+            r.setIdAutomatOdb(rs.getInt("id_a_odbiorczego"));
+            r.setAdresAutomatuOdbiorczego(rs.getString("adres_odbioru"));
+
+
+
+
+            receiverViewList.add(r);
+
+        }
+
+        return receiverViewList;
     }
 
 /*
@@ -217,6 +230,26 @@ public class RacketDAO {
 
         } catch (SQLException e) {
             consoleTextArea.appendText("Error occurred while INSERT Operation.");
+            throw e;
+        }
+    }
+
+    public ObservableList<ReceiverView> showAllReceiverView() throws SQLException, ClassNotFoundException {
+
+        String selectStmt = "SELECT * FROM widok_odbiorcy;";
+
+        try {
+
+            ResultSet resultSet = dbUtil.dbExecuteQuery(selectStmt);
+
+            ObservableList<ReceiverView> receiverViewList = getReceiverViewList(resultSet);
+            consoleTextArea.appendText(selectStmt);
+
+            return receiverViewList;
+
+
+        } catch (SQLException e) {
+            consoleTextArea.appendText("While searching widok paczek, an error occurred. \n");
             throw e;
         }
     }

@@ -49,49 +49,52 @@ public class KlientController {
     private ImageView imageCilentView;
 
     @FXML
-    private TableColumn<?, ?> colNad1;
+    private TableColumn<SenderView, String> colNad1;
 
     @FXML
-    private TableColumn<?, ?> colNad2;
+    private TableColumn<SenderView, String> colNad2;
 
     @FXML
-    private TableColumn<?, ?> colNad3;
+    private TableColumn<SenderView, String> colNad3;
 
     @FXML
-    private TableColumn<?, ?> colNad4;
+    private TableColumn<SenderView, String> colNad4;
 
     @FXML
-    private TableColumn<?, ?> colNad5;
+    private TableColumn<SenderView, String> colNad5;
 
     @FXML
-    private TableColumn<?, ?> colNad6;
+    private TableColumn<SenderView, String> colNad6;
 
     @FXML
-    private TableColumn<?, ?> colNad7;
+    private TableColumn<SenderView, String> colNad7;
 
     @FXML
-    private TableColumn<?, ?> colNad8;
+    private TableColumn<SenderView, String> colNad8;
 
     @FXML
-    private TableColumn<?, ?> colOdb1;
+    private TableView paczkiOdebraneTable;
 
     @FXML
-    private TableColumn<?, ?> colOdb2;
+    private TableColumn<ReceiverView, String> colOdb1;
 
     @FXML
-    private TableColumn<?, ?> colOdb3;
+    private TableColumn<ReceiverView, String> colOdb2;
 
     @FXML
-    private TableColumn<?, ?> colOdb4;
+    private TableColumn<ReceiverView, String> colOdb3;
 
     @FXML
-    private TableColumn<?, ?> colOdb5;
+    private TableColumn<ReceiverView, String> colOdb4;
 
     @FXML
-    private TableColumn<?, ?> colOdb6;
+    private TableColumn<ReceiverView, String> colOdb5;
 
     @FXML
-    private TableColumn<?, ?> colOdb7;
+    private TableColumn<ReceiverView, String> colOdb6;
+
+    @FXML
+    private TableColumn<ReceiverView, String> colOdb7;
 
     @FXML
     private TextField inputAdrOdb;
@@ -197,9 +200,24 @@ public class KlientController {
     SpinnerValueFactory<String> valueFactory = new SpinnerValueFactory.ListSpinnerValueFactory<String>(sizes);
 
     @FXML
-    void onBtnShowPack(ActionEvent event) {
+    void onBtnShowPack(ActionEvent event) throws SQLException, ClassNotFoundException {
+        try {
+
+            paczkiOdebraneTable.getItems().clear();
+            ObservableList<ReceiverView> receiverViewData = racketDAO.showAllReceiverView();
+            populateReceiverView(receiverViewData);
+
+        } catch (SQLException | ClassNotFoundException e) {
+            consoleTextArea.appendText("Error occurred while getting rackets from DB.\n");
+            throw e;
+        }
 
     }
+
+    private void populateReceiverView(ObservableList<ReceiverView> receiverViewData) {
+        paczkiOdebraneTable.setItems(receiverViewData);
+    }
+
 
     @FXML
     void onBtnNadajPaczkę(ActionEvent event) {
@@ -243,5 +261,7 @@ public class KlientController {
         assert spinner != null : "fx:id=\"spinner\" was not injected: check your FXML file 'dbFX.fxml'.";
         assert inputPaczNad != null : "fx:id=\"inputPaczNad\" was not injected: check your FXML file 'dbFX.fxml'.";
         assert btnNadajPaczke != null : "fx:id=\"btnNadajPaczke\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert paczkiOdebraneTable != null : "fx:id=\"paczkiOdebraneTable\" was not injected: check your FXML file 'dbFX.fxml'.";
+
     }
     }

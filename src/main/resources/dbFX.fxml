@@ -17,6 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <SplitPane dividerPositions="0.36050955414012736, 0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="787.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KlientController">
     <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="413.0" prefWidth="227.0">
@@ -67,15 +68,43 @@
                      </columns>
                   </TableView>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Paczki do odebrania: " textAlignment="CENTER" wrappingWidth="599.9343872070312" />
-                  <TableView prefHeight="200.0" prefWidth="200.0">
+                  <TableView fx:id="paczkiOdebraneTable" prefHeight="200.0" prefWidth="200.0">
                      <columns>
-                        <TableColumn fx:id="colOdb1" prefWidth="62.39999467134476" text="id paczki" />
-                        <TableColumn fx:id="colOdb2" prefWidth="58.39999008178711" text="data nadania " />
-                        <TableColumn fx:id="colOdb3" prefWidth="94.39999389648438" text="ostatni termin odbioru" />
-                        <TableColumn fx:id="colOdb4" prefWidth="52.80000305175781" text="nadawca" />
-                        <TableColumn fx:id="colOdb5" prefWidth="103.20001220703125" text="adres nadawcy" />
-                        <TableColumn fx:id="colOdb6" prefWidth="112.0" text="id automatu odb" />
-                        <TableColumn fx:id="colOdb7" prefWidth="116.79998779296875" text="adres paczkomatu" />
+                        <TableColumn fx:id="colOdb1" prefWidth="62.39999467134476" text="id paczki" >
+                         <cellValueFactory>
+                             <PropertyValueFactory property="idPackages" />
+                         </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="colOdb2" prefWidth="58.39999008178711" text="data nadania " >
+                         <cellValueFactory>
+                             <PropertyValueFactory property="send_date" />
+                         </cellValueFactory>
+                     </TableColumn>
+                        <TableColumn fx:id="colOdb3" prefWidth="94.39999389648438" text="ostatni termin odbioru" >
+                            <cellValueFactory>
+                                <PropertyValueFactory property="data_end" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="colOdb4" prefWidth="52.80000305175781" text="nadawca" >
+                         <cellValueFactory>
+                             <PropertyValueFactory property="idClientNad" />
+                         </cellValueFactory>
+                     </TableColumn>
+                        <TableColumn fx:id="colOdb5" prefWidth="103.20001220703125" text="adres nadawcy" >
+                         <cellValueFactory>
+                         <PropertyValueFactory property="adresNadawcy" />
+                     </cellValueFactory>
+                     </TableColumn>
+                        <TableColumn fx:id="colOdb6" prefWidth="112.0" text="id automatu odb" >
+                         <cellValueFactory>
+                             <PropertyValueFactory property="idAutomatOdb" />
+                         </cellValueFactory>
+                     </TableColumn>
+                        <TableColumn fx:id="colOdb7" prefWidth="116.79998779296875" text="adres paczkomatu" >
+                         <cellValueFactory>
+                             <PropertyValueFactory property="adresAutomatuOdbiorczego" />
+                         </cellValueFactory>
+                     </TableColumn>
                      </columns>
                   </TableView>
                   <VBox prefHeight="124.0" prefWidth="600.0">
