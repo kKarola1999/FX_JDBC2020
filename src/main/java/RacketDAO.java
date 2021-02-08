@@ -119,7 +119,7 @@ public class RacketDAO {
 
 
         } catch (SQLException e) {
-            consoleTextArea.appendText("While searching rackets, an error occurred. \n");
+            consoleTextArea.appendText("While searching clients, an error occurred. \n");
             throw e;
         }
 
@@ -144,7 +144,7 @@ public class RacketDAO {
 
 
         } catch (SQLException e) {
-            consoleTextArea.appendText("While searching rackets, an error occurred. \n");
+            consoleTextArea.appendText("While searching statystyka, an error occurred. \n");
             throw e;
         }
 
@@ -165,7 +165,7 @@ public class RacketDAO {
 
 
         } catch (SQLException e) {
-            consoleTextArea.appendText("While searching rackets, an error occurred. \n");
+            consoleTextArea.appendText("While searching widok paczek, an error occurred. \n");
             throw e;
         }
 
