@@ -49,6 +49,9 @@ public class KlientController {
     private ImageView imageCilentView;
 
     @FXML
+    private TableView nadwcaTabel;
+
+    @FXML
     private TableColumn<SenderView, String> colNad1;
 
     @FXML
@@ -126,31 +129,9 @@ public class KlientController {
         dbUtil.dbConnect();
 
         consoleTextArea.appendText("Access granted for user \"" + userTextField.getText() + "\"." + "\n");
-//        Parent root;
-//        try {
-//            root = FXMLLoader.load(getClass().getClassLoader().getResource("user_view.fxml"), resources);
-//            Stage stage = new Stage();
-//            stage.setTitle("Widok klienta");
-//            stage.setScene(new Scene(root, 1000, 600));
-//            stage.show();
-//            // Hide this current window (if this is what you want)
-//            ((Node)(event.getSource())).getScene().getWindow().hide();
-//        }
-//        catch (IOException e) {
-//            e.printStackTrace();
-//        }
+
         connectButton.setDisable(true);
         disconnectButton.setDisable(false);
-
-        /*
-        addRacketButton.setDisable(false);
-        selectRacketButton.setDisable(false);
-        showRacketsButton.setDisable(false);
-
-        selectRacketNameTextField.setDisable(false);
-        racketNameToAddTextField.setDisable(false);
-
-         */
 
     }
 
@@ -204,8 +185,12 @@ public class KlientController {
         try {
 
             paczkiOdebraneTable.getItems().clear();
+            nadwcaTabel.getItems().clear();
             ObservableList<ReceiverView> receiverViewData = racketDAO.showAllReceiverView();
             populateReceiverView(receiverViewData);
+            ObservableList<SenderView> senderData = racketDAO.showAllSender();
+            populateSenderView(senderData);
+
 
         } catch (SQLException | ClassNotFoundException e) {
             consoleTextArea.appendText("Error occurred while getting rackets from DB.\n");
@@ -216,6 +201,9 @@ public class KlientController {
 
     private void populateReceiverView(ObservableList<ReceiverView> receiverViewData) {
         paczkiOdebraneTable.setItems(receiverViewData);
+
+    } private void populateSenderView(ObservableList<SenderView> senderViews) {
+        nadwcaTabel.setItems(senderViews);
     }
 
 
@@ -238,6 +226,7 @@ public class KlientController {
         assert passwordTextField != null : "fx:id=\"passwordTextField\" was not injected: check your FXML file 'dbFX.fxml'.";
         assert connectButton != null : "fx:id=\"connectButton\" was not injected: check your FXML file 'dbFX.fxml'.";
         assert btnSignIn != null : "fx:id=\"btnSignIn\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert nadwcaTabel != null : "fx:id=\"nadwcaTabel\" was not injected: check your FXML file 'dbFX.fxml'.";
         assert disconnectButton != null : "fx:id=\"disconnectButton\" was not injected: check your FXML file 'dbFX.fxml'.";
         assert consoleTextArea != null : "fx:id=\"consoleTextArea\" was not injected: check your FXML file 'dbFX.fxml'.";
         assert imageCilentView != null : "fx:id=\"imageCilentView\" was not injected: check your FXML file 'dbFX.fxml'.";

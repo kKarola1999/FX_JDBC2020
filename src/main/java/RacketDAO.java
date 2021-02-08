@@ -35,6 +35,23 @@ public class RacketDAO {
         return clientList;
     }
 
+    private  ObservableList<SenderView> getSenderList(ResultSet rs) throws SQLException{
+        ObservableList<SenderView> senderList = FXCollections.observableArrayList();
+        while (rs.next()){
+            SenderView s =  new SenderView();
+            s.setIdPaczki(rs.getInt("id_paczki"));
+            s.setDataNadania(rs.getString("data_nadania"));
+            s.setDataOdebrania(rs.getString("data_odebrania"));
+            s.setIdAutomatuNadawczego(rs.getInt("id_a_nadawcy"));
+            s.setAdresNadania(rs.getString("adres_nadania"));
+            s.setOdbiorca(rs.getInt("obiorca"));
+            s.setAdresOdbiorcy(rs.getString("adres_odbiorcy"));
+            s.setIdAutomatuOdbiorczego(rs.getInt("id_a_odbiorczego"));
+            s.setAdresOdbiorcy(rs.getString("adres_odbioru"));
+            senderList.add(s);
+        }
+        return  senderList;
+    }
 
     private ObservableList<Statystyka> getStatystykaList(ResultSet rs) throws SQLException {
 
@@ -150,6 +167,20 @@ public class RacketDAO {
             throw e;
         }
 
+    }
+
+    public ObservableList<SenderView> showAllSender () throws SQLException, ClassNotFoundException {
+        String selectStmt  = "SELECT * FROM widok_nadawcy;";
+        try{
+            ResultSet resultSet = dbUtil.dbExecuteQuery(selectStmt);
+            ObservableList<SenderView>senderList =  getSenderList(resultSet);
+            consoleTextArea.appendText("ddziała");
+
+            return  senderList;
+        } catch (SQLException | ClassNotFoundException e) {
+            consoleTextArea.appendText("While searching sender, an error occurred. \n");
+            throw e;
+        }
     }
 
     public ObservableList<Statystyka> showAllZysk(String date, String idAutomatu) throws SQLException, ClassNotFoundException {

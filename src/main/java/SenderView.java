@@ -6,9 +6,9 @@ public class SenderView {
     private StringProperty dataOdebrania;
     private IntegerProperty idAutomatuNadawczego;
     private StringProperty adresNadania;
-    private StringProperty odbiorca;
+    private IntegerProperty odbiorca;
     private StringProperty adresOdbiorcy;
-    private StringProperty getIdAutomatuOdbiorczego;
+    private IntegerProperty IdAutomatuOdbiorczego;
     private StringProperty adresOdbioru;
 
 
@@ -18,9 +18,9 @@ public class SenderView {
         dataOdebrania = new SimpleStringProperty();
         idAutomatuNadawczego = new SimpleIntegerProperty();
         adresNadania = new SimpleStringProperty();
-        odbiorca = new SimpleStringProperty();
+        odbiorca = new SimpleIntegerProperty();
         adresOdbiorcy = new SimpleStringProperty();
-        getIdAutomatuOdbiorczego = new SimpleStringProperty();
+        IdAutomatuOdbiorczego = new SimpleIntegerProperty();
         adresOdbioru = new SimpleStringProperty();
     }
 
@@ -84,15 +84,15 @@ public class SenderView {
         this.adresNadania.set(adresNadania);
     }
 
-    public String getOdbiorca() {
+    public int getOdbiorca() {
         return odbiorca.get();
     }
 
-    public StringProperty odbiorcaProperty() {
+    public IntegerProperty odbiorcaProperty() {
         return odbiorca;
     }
 
-    public void setOdbiorca(String odbiorca) {
+    public void setOdbiorca(int odbiorca) {
         this.odbiorca.set(odbiorca);
     }
 
@@ -108,16 +108,16 @@ public class SenderView {
         this.adresOdbiorcy.set(adresOdbiorcy);
     }
 
-    public String getGetIdAutomatuOdbiorczego() {
-        return getIdAutomatuOdbiorczego.get();
+    public Integer getIdAutomatuOdbiorczego() {
+        return IdAutomatuOdbiorczego.get();
     }
 
-    public StringProperty getIdAutomatuOdbiorczegoProperty() {
-        return getIdAutomatuOdbiorczego;
+    public IntegerProperty idAutomatuOdbiorczegoProperty() {
+        return IdAutomatuOdbiorczego;
     }
 
-    public void setGetIdAutomatuOdbiorczego(String getIdAutomatuOdbiorczego) {
-        this.getIdAutomatuOdbiorczego.set(getIdAutomatuOdbiorczego);
+    public void setIdAutomatuOdbiorczego(int idAutomatuOdbiorczego) {
+        this.IdAutomatuOdbiorczego.set(idAutomatuOdbiorczego);
     }
 
     public String getAdresOdbioru() {
