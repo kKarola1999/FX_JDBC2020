@@ -6,7 +6,9 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <SplitPane dividerPositions="0.36050955414012736" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="787.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KlientController">
@@ -19,7 +21,12 @@
                         <TextField fx:id="userTextField" promptText="Podaj nazwę" />
                         <Label text="Hasło:" />
                         <PasswordField fx:id="passwordTextField" promptText="Podaj hasło" />
-                        <Button fx:id="connectButton" mnemonicParsing="false" onAction="#connectButtonPressed" text="POŁĄCZ" />
+                  <HBox prefHeight="37.0" prefWidth="220.0">
+                     <children>
+                              <Button fx:id="connectButton" mnemonicParsing="false" onAction="#connectButtonPressed" prefHeight="26.0" prefWidth="187.0" text="POŁĄCZ" />
+                        <Button fx:id="btnSignIn" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onBtnSignIn" prefHeight="26.0" prefWidth="190.0" text="ZAREJESTRUJ SIĘ " />
+                     </children>
+                  </HBox>
                         <Button fx:id="disconnectButton" disable="true" mnemonicParsing="false" onAction="#disconnectButtonPressed" text="ROZŁĄCZ" />
                         <TextArea fx:id="consoleTextArea" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
                     </children>
@@ -28,17 +35,7 @@
         </AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="473.0" prefWidth="546.0">
          <children>
-            <TextArea layoutX="59.0" layoutY="58.0" prefHeight="38.0" prefWidth="76.0" text="Twoje ID" />
-            <TextField fx:id="IDText" layoutX="259.0" layoutY="58.0" prefHeight="38.0" prefWidth="149.0" />
-            <TextArea layoutX="59.0" layoutY="113.0" prefHeight="38.0" prefWidth="134.0" text="Imie i Nazwisko" />
-            <TextArea layoutX="59.0" layoutY="168.0" prefHeight="38.0" prefWidth="83.0" text="Adres" />
-            <TextArea layoutX="59.0" layoutY="221.0" prefHeight="38.0" prefWidth="95.0" text="Email" />
-            <TextArea layoutX="59.0" layoutY="272.0" prefHeight="38.0" prefWidth="122.0" text="Numer telefonu" />
-            <TextField fx:id="IdName" layoutX="259.0" layoutY="113.0" prefHeight="38.0" prefWidth="149.0" />
-            <TextField fx:id="idEmail" layoutX="259.0" layoutY="221.0" prefHeight="38.0" prefWidth="149.0" />
-            <TextField fx:id="idAdres" layoutX="259.0" layoutY="168.0" prefHeight="38.0" prefWidth="149.0" />
-            <TextField fx:id="idTelNum" layoutX="259.0" layoutY="272.0" prefHeight="38.0" prefWidth="149.0" />
-            <Button fx:id="idLogIn" layoutX="96.0" layoutY="351.0" mnemonicParsing="false" onAction="#onLogIn" prefHeight="25.0" prefWidth="260.0" text="Zaloguj się" />
+            <ImageView fx:id="imageCilentView" fitHeight="342.0" fitWidth="435.0" layoutX="33.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" />
          </children>
         </AnchorPane>
     </items>

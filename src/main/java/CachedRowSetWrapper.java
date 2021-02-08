@@ -1,5 +1,5 @@
 import com.sun.rowset.CachedRowSetImpl;
-//import com.sun.rowset.*;
+import com.sun.rowset.*;
 
 import javax.sql.rowset.*;
 

@@ -46,6 +46,7 @@
             <version>3.8.0</version>
             <configuration>
                 <release>15</release>
+                <executable>/path/to/jdk-12/bin/java</executable>
             </configuration>
         </plugin>
         <plugin>
