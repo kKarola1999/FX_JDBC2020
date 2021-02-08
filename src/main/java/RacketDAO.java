@@ -42,8 +42,8 @@ public class RacketDAO {
 
             Statystyka s = new Statystyka();
             s.setIdAutomatNad(rs.getInt("idAutomatNad"));
-            s.setSend_date(rs.getString("send_date"));
-            s.setZysk_paczki(rs.getDouble("zysk_paczki"));
+            s.setSend_date(rs.getString("count(send_date)"));
+            s.setZysk_paczki(rs.getDouble("sum(zysk_paczki)"));
 
 
 
@@ -125,16 +125,20 @@ public class RacketDAO {
 
     }
 
-    public ObservableList<Statystyka> showAllZysk() throws SQLException, ClassNotFoundException {
+    public ObservableList<Statystyka> showAllZysk(String date, String idAutomatu) throws SQLException, ClassNotFoundException {
 
-        String selectStmt = "SELECT * FROM statystyka;";
-
+        StringBuilder sb = new StringBuilder("select idAutomatNad,count(send_date),sum(zysk_paczki) from statystyka where idAutomatNad='");
+        sb.append(idAutomatu);
+        sb.append("'and send_date='");
+        sb.append(date);
+        sb.append("';");
+        String insertStmt = sb.toString();
         try {
 
-            ResultSet resultSet = dbUtil.dbExecuteQuery(selectStmt);
+            ResultSet resultSet = dbUtil.dbExecuteQuery(insertStmt);
 
             ObservableList<Statystyka> clientList = getStatystykaList(resultSet);
-            consoleTextArea.appendText(selectStmt);
+            consoleTextArea.appendText(insertStmt);
 
             return clientList;
 
@@ -166,6 +170,44 @@ public class RacketDAO {
         }
 
     }
+
+    public void updatePackages(String name) throws SQLException, ClassNotFoundException {
+
+
+        StringBuilder sb = new StringBuilder("update packages set status='send' where idPackages='");
+        sb.append(name);
+        sb.append("';");
+        String insertStmt = sb.toString();
+        try {
+
+            dbUtil.dbExecuteUpdate(insertStmt);
+            consoleTextArea.appendText(insertStmt + "\n");
+
+        } catch (SQLException e) {
+            consoleTextArea.appendText("Error occurred while INSERT Operation.");
+            throw e;
+        }
+    }
+
+    public void updatePackagesPickup(String name) throws SQLException, ClassNotFoundException {
+
+
+        StringBuilder sb = new StringBuilder("update packages set status='pickup',data_arrive=curdate(), data_end=date_add(curdate(),INTERVAL 10 DAY) where idPackages='");
+        sb.append(name);
+        sb.append("';");
+        String insertStmt = sb.toString();
+        try {
+
+            dbUtil.dbExecuteUpdate(insertStmt);
+            consoleTextArea.appendText(insertStmt + "\n");
+
+        } catch (SQLException e) {
+            consoleTextArea.appendText("Error occurred while INSERT Operation.");
+            throw e;
+        }
+    }
+
+
 /*
     public void insertClient(String name) throws SQLException, ClassNotFoundException {
 

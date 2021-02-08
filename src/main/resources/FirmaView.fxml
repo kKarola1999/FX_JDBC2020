@@ -11,8 +11,10 @@
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<SplitPane dividerPositions="0.24647122692725298" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="923.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FirmaController">
+<SplitPane dividerPositions="0.24647122692725298" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="923.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FirmaController">
     <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="444.0" prefWidth="280.0">
             <children>
@@ -32,18 +34,18 @@
         </AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="451.0" prefWidth="499.0">
             <children>
-                <SplitPane layoutX="1.0" layoutY="3.0" orientation="VERTICAL" prefHeight="391.0" prefWidth="610.0">
+                <SplitPane layoutX="1.0" layoutY="3.0" orientation="VERTICAL" prefHeight="391.0" prefWidth="678.0">
                     <items>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="389.0" prefWidth="474.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="389.0" prefWidth="641.0">
                             <children>
-                                <TableView fx:id="statystykaTable" editable="true" layoutX="-2.0" layoutY="-2.0" prefHeight="192.0" prefWidth="489.0">
+                                <TableView fx:id="statystykaTable" editable="true" layoutY="37.0" prefHeight="94.0" prefWidth="407.0">
                                     <columns>
                                         <TableColumn fx:id="idAutNad" prefWidth="75.0" text="Automat nadawczy">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="idAutomatNad" />
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn fx:id="inSendDate" prefWidth="75.0" text="Data wysłania">
+                                        <TableColumn fx:id="inSendDate" prefWidth="75.0" text="Ilość paczek">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="send_date" />
                                             </cellValueFactory>
@@ -58,62 +60,83 @@
                                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                     </columnResizePolicy>
                                 </TableView>
-                        <TableView fx:id="packagesTable" layoutX="1.0" layoutY="190.0" prefHeight="200.0" prefWidth="608.0">
+                        <TableView fx:id="packagesTable" layoutY="190.0" prefHeight="200.0" prefWidth="676.0">
                           <columns>
-                            <TableColumn fx:id="idPaczki" prefWidth="58.0" text="idPaczki" >
-                              <cellValueFactory>
-                                  <PropertyValueFactory property="idPackages" />
-                              </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn fx:id="status" prefWidth="50.0" text="status" >
-                              <cellValueFactory>
-                                  <PropertyValueFactory property="status" />
-                              </cellValueFactory>
-                          </TableColumn>
-                              <TableColumn fx:id="size" prefWidth="39.0" text="size" >
-                              <cellValueFactory>
-                                  <PropertyValueFactory property="size" />
-                              </cellValueFactory>
-                          </TableColumn>
-                              <TableColumn fx:id="sendDate" prefWidth="70.0" text="send_date" >
-                              <cellValueFactory>
-                                  <PropertyValueFactory property="send_date" />
-                              </cellValueFactory>
-                          </TableColumn>
-                              <TableColumn fx:id="dataArrive" prefWidth="78.0" text="data_arrive" >
-                              <cellValueFactory>
-                                  <PropertyValueFactory property="data_arrive" />
-                              </cellValueFactory>
-                          </TableColumn>
-                              <TableColumn fx:id="dataEnd" prefWidth="62.0" text="data-end" >
-                              <cellValueFactory>
-                                  <PropertyValueFactory property="data_end" />
-                              </cellValueFactory>
-                          </TableColumn>
-                              <TableColumn fx:id="automatOdb" prefWidth="90.0" text="idAOdb" >
-                              <cellValueFactory>
-                                  <PropertyValueFactory property="idAutomatNad" />
-                              </cellValueFactory>
-                          </TableColumn>
+                              <TableColumn fx:id="idPaczki" prefWidth="58.0" text="idPaczki">
+                                  <cellValueFactory>
+                                      <PropertyValueFactory property="idPackages" />
+                                  </cellValueFactory>
+                              </TableColumn>
+                              <TableColumn fx:id="status" prefWidth="50.0" text="status">
+                                  <cellValueFactory>
+                                      <PropertyValueFactory property="status" />
+                                  </cellValueFactory>
+                              </TableColumn>
+                              <TableColumn fx:id="size" prefWidth="39.0" text="size">
+                                  <cellValueFactory>
+                                      <PropertyValueFactory property="size" />
+                                  </cellValueFactory>
+                              </TableColumn>
+                              <TableColumn fx:id="sendDate" prefWidth="92.0" text="send_date">
+                                  <cellValueFactory>
+                                      <PropertyValueFactory property="send_date" />
+                                  </cellValueFactory>
+                              </TableColumn>
+                              <TableColumn fx:id="dataArrive" prefWidth="93.0" text="data_arrive">
+                                  <cellValueFactory>
+                                      <PropertyValueFactory property="data_arrive" />
+                                  </cellValueFactory>
+                              </TableColumn>
+                              <TableColumn fx:id="dataEnd" prefWidth="85.0" text="data-end">
+                                  <cellValueFactory>
+                                      <PropertyValueFactory property="data_end" />
+                                  </cellValueFactory>
+                              </TableColumn>
+                              <TableColumn fx:id="automatOdb" prefWidth="81.0" text="idAOdb">
+                                  <cellValueFactory>
+                                      <PropertyValueFactory property="idAutomatNad" />
+                                  </cellValueFactory>
+                              </TableColumn>
 
-                              <TableColumn fx:id="automatNad" prefWidth="62.0" text="idANad" >
-                              <cellValueFactory>
-                                  <PropertyValueFactory property="idAutomatOdb" />
-                              </cellValueFactory>
-                          </TableColumn>
-                              <TableColumn fx:id="pickupDate" prefWidth="97.0" text="pickup_date" >
+                              <TableColumn fx:id="automatNad" prefWidth="74.0" text="idANad">
+                                  <cellValueFactory>
+                                      <PropertyValueFactory property="idAutomatOdb" />
+                                  </cellValueFactory>
+                              </TableColumn>
+                              <TableColumn fx:id="pickupDate" prefWidth="103.0" text="pickup_date">
                               <cellValueFactory>
                                   <PropertyValueFactory property="pickup_date" />
                               </cellValueFactory>
-                          </TableColumn>
+                              </TableColumn>
                           </columns>
                         </TableView>
+                                <Button fx:id="btnStatystyka" layoutX="501.0" layoutY="117.0" mnemonicParsing="false" onAction="#onStatystykaClick" text="Statystyka" />
+                        <Text layoutX="294.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statystyka" wrappingWidth="87.876953125">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="416.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Podaj id automatu" />
+                        <Text layoutX="436.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Podaj datę" />
+                        <TextField fx:id="podaiIdAutomatu" layoutX="543.0" layoutY="41.0" prefHeight="26.0" prefWidth="121.0" />
+                        <TextField fx:id="podajDate" layoutX="543.0" layoutY="80.0" prefHeight="25.0" prefWidth="121.0" />
+                        <Text layoutX="282.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Widok paczek">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
                             </children>
                         </AnchorPane>
                     </items>
                 </SplitPane>
-                    <Button fx:id="btnStatystyka" layoutX="55.0" layoutY="405.0" mnemonicParsing="false" onAction="#onStatystykaClick" text="Statystyka" />
-            <Button fx:id="idPackages" layoutX="366.0" layoutY="405.0" mnemonicParsing="false" onAction="#onPackagesClick" text="Packages" />
+            <Button fx:id="idPackages" layoutX="66.0" layoutY="472.0" mnemonicParsing="false" onAction="#onPackagesClick" text="Packages" />
+            <Button fx:id="sendButton" layoutX="234.0" layoutY="422.0" mnemonicParsing="false" onAction="#onSendButtonClick" text="Zmień status paczki na send" />
+            <TextField fx:id="idSend" layoutX="234.0" layoutY="497.0" />
+            <Button fx:id="idPickup" layoutX="466.0" layoutY="422.0" mnemonicParsing="false" onAction="#onPickupButton" text="Zmień status paczki na pickup" />
+            <Text layoutX="46.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pokaż widok paczek" />
+            <Text layoutX="268.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wpisz id paczki" />
+            <Text layoutX="513.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wpisz id paczki" />
+            <TextField fx:id="idTextPickup" layoutX="479.0" layoutY="497.0" />
             </children>
         </AnchorPane>
     </items>
