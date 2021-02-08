@@ -34,6 +34,20 @@ public class RacketDAO {
 
         return clientList;
     }
+
+    private  ObservableList<SenderView> getSenderList(ResultSet rs) throws SQLException{
+        ObservableList<SenderView> senderList = FXCollections.observableList();
+        while (rs.next()){
+            SenderView s =  new SenderView();
+            s.setIdPaczki(rs.getInt("id_paczki"));
+            s.setDataNadania(rs.getString("data_nadania"));
+            s.setDataOdebrania(rs.getString("data_odebrania"));
+            s.setIdAutomatuNadawczego(rs.getInt("id_a_nadawcy"));
+            s.setAdresNadania(rs.getString());
+
+        }
+    }
+
     private ObservableList<Statystyka> getStatystykaList(ResultSet rs) throws SQLException {
 
         ObservableList<Statystyka> statystykaList = FXCollections.observableArrayList();

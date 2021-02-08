@@ -34,6 +34,9 @@ public class KlientController {
     private Button connectButton;
 
     @FXML
+    private Button btnShowPack;
+
+    @FXML
     private Button btnSignIn;
 
     @FXML
@@ -120,19 +123,19 @@ public class KlientController {
         dbUtil.dbConnect();
 
         consoleTextArea.appendText("Access granted for user \"" + userTextField.getText() + "\"." + "\n");
-        Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getClassLoader().getResource("user_view.fxml"), resources);
-            Stage stage = new Stage();
-            stage.setTitle("Widok klienta");
-            stage.setScene(new Scene(root, 1000, 600));
-            stage.show();
-            // Hide this current window (if this is what you want)
-            ((Node)(event.getSource())).getScene().getWindow().hide();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+//        Parent root;
+//        try {
+//            root = FXMLLoader.load(getClass().getClassLoader().getResource("user_view.fxml"), resources);
+//            Stage stage = new Stage();
+//            stage.setTitle("Widok klienta");
+//            stage.setScene(new Scene(root, 1000, 600));
+//            stage.show();
+//            // Hide this current window (if this is what you want)
+//            ((Node)(event.getSource())).getScene().getWindow().hide();
+//        }
+//        catch (IOException e) {
+//            e.printStackTrace();
+//        }
         connectButton.setDisable(true);
         disconnectButton.setDisable(false);
 
@@ -194,21 +197,26 @@ public class KlientController {
     SpinnerValueFactory<String> valueFactory = new SpinnerValueFactory.ListSpinnerValueFactory<String>(sizes);
 
     @FXML
+    void onBtnShowPack(ActionEvent event) {
+
+    }
+
+    @FXML
     void onBtnNadajPaczkę(ActionEvent event) {
         spinner = new Spinner<String>();
         // wartość wyjsciowa spinnera
         valueFactory.setValue("M");
         spinner.setValueFactory(valueFactory);
-
-
     }
 
-
-
+// todo inserty dla dodawania paczek
+// todo inserty nowy użytkownik
+// todo odbior paczki widok i update (podaj id paczki i w tedy dodaj date odbioru)
 
     @FXML
     void initialize() {
         assert userTextField != null : "fx:id=\"userTextField\" was not injected: check your FXML file 'dbFX.fxml'.";
+        assert btnShowPack != null : "fx:id=\"btnShowPack\" was not injected: check your FXML file 'dbFX.fxml'.";
         assert passwordTextField != null : "fx:id=\"passwordTextField\" was not injected: check your FXML file 'dbFX.fxml'.";
         assert connectButton != null : "fx:id=\"connectButton\" was not injected: check your FXML file 'dbFX.fxml'.";
         assert btnSignIn != null : "fx:id=\"btnSignIn\" was not injected: check your FXML file 'dbFX.fxml'.";

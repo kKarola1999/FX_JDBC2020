@@ -33,7 +33,12 @@
                                 <Button fx:id="btnSignIn" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onBtnSignIn" prefHeight="26.0" prefWidth="190.0" text="ZAREJESTRUJ SIĘ " />
                             </children>
                         </HBox>
-                        <Button fx:id="disconnectButton" disable="true" mnemonicParsing="false" onAction="#disconnectButtonPressed" text="ROZŁĄCZ" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                              <Button fx:id="disconnectButton" disable="true" mnemonicParsing="false" onAction="#disconnectButtonPressed" text="ROZŁĄCZ" />
+                        <Button fx:id="btnShowPack" mnemonicParsing="false" onAction="#onBtnShowPack" text="Pokaż Paczki" />
+                     </children>
+                  </HBox>
                         <TextArea fx:id="consoleTextArea" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
                     </children>
                 </VBox>
