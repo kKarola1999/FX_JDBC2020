@@ -14,6 +14,7 @@ public class PackagesApp extends Application {
     public void start(Stage stage) throws IOException {
 
             Parent root = FXMLLoader.load(getClass().getResource("start.fxml"));
+            stage.setTitle("Paczkoinator");
             Scene scene = new Scene(root, 500,300 );
             stage.setScene(scene);
             stage.show();

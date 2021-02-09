@@ -2,8 +2,9 @@ package controller;
 
 import com.github.vldrus.sql.rowset.CachedRowSetWrapper;
 import javafx.scene.control.TextArea;
-import java.sql.*;
+
 import javax.sql.rowset.CachedRowSet;
+import java.sql.*;
 
 
 public class DBUtil {
@@ -47,7 +48,7 @@ public class DBUtil {
             if (conn != null && !conn.isClosed()) {
 
                 conn.close();
-                consoleTextArea.appendText("Connection closed. Bye!" + "\n");
+                consoleTextArea.appendText(" " + "\n");
 
             }
         } catch (Exception e) {
