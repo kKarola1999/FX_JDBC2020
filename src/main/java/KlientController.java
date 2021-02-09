@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -152,6 +151,9 @@ public class KlientController {
 
         connectButton.setDisable(true);
         disconnectButton.setDisable(false);
+        btnShowPack.setDisable(false);
+        btnNadajPaczke.setDisable(false);
+        btnPickUp.setDisable(false);
 
     }
 
@@ -163,18 +165,12 @@ public class KlientController {
         dbUtil.dbDisconnect();
         connectButton.setDisable(false);
         disconnectButton.setDisable(true);
-        /*
-        addRacketButton.setDisable(true);
-        selectRacketButton.setDisable(true);
-        showRacketsButton.setDisable(true);
-        selectRacketNameTextField.setDisable(true);
-        selectRacketNameTextField.setText("");
-        selectRacketNameTextField.setPromptText("Podaj nazwę");
-        racketNameToAddTextField.setDisable(true);
-        racketNameToAddTextField.setText("");
-        racketNameToAddTextField.setPromptText("Podaj nazwę");
-        clientsTable.getItems().clear();
-*/
+        btnShowPack.setDisable(true);
+        btnNadajPaczke.setDisable(true);
+        btnPickUp.setDisable(true);
+
+
+
     }
 
     @FXML
@@ -307,6 +303,10 @@ public class KlientController {
         assert btnPickUp != null : "fx:id=\"btnPickUp\" was not injected: check your FXML file 'KlientView.fxml'.";
         assert idNadawcy != null : "fx:id=\"idNadawcy\" was not injected: check your FXML file 'KlientView.fxml'.";
         assert inputSize != null : "fx:id=\"inputSize\" was not injected: check your FXML file 'KlientView.fxml'.";
+        disconnectButton.setDisable(true);
+        btnShowPack.setDisable(true);
+        btnNadajPaczke.setDisable(true);
+        btnPickUp.setDisable(true);
 
     }
 }
