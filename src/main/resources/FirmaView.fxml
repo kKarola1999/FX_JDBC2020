@@ -62,7 +62,7 @@
                                 </TableView>
                         <TableView fx:id="packagesTable" layoutY="190.0" prefHeight="200.0" prefWidth="676.0">
                           <columns>
-                              <TableColumn fx:id="idPaczki" prefWidth="58.0" text="idPaczki">
+                              <TableColumn fx:id="idPaczki" prefWidth="58.0" text="ID paczki">
                                   <cellValueFactory>
                                       <PropertyValueFactory property="idPackages" />
                                   </cellValueFactory>
@@ -72,38 +72,38 @@
                                       <PropertyValueFactory property="status" />
                                   </cellValueFactory>
                               </TableColumn>
-                              <TableColumn fx:id="size" prefWidth="39.0" text="size">
+                              <TableColumn fx:id="size" prefWidth="75.199951171875" text="Gabaryt">
                                   <cellValueFactory>
                                       <PropertyValueFactory property="size" />
                                   </cellValueFactory>
                               </TableColumn>
-                              <TableColumn fx:id="sendDate" prefWidth="92.0" text="send_date">
+                              <TableColumn fx:id="sendDate" prefWidth="56.0" text="Nadana">
                                   <cellValueFactory>
                                       <PropertyValueFactory property="send_date" />
                                   </cellValueFactory>
                               </TableColumn>
-                              <TableColumn fx:id="dataArrive" prefWidth="93.0" text="data_arrive">
+                              <TableColumn fx:id="dataArrive" prefWidth="76.800048828125" text="Dostarczona">
                                   <cellValueFactory>
                                       <PropertyValueFactory property="data_arrive" />
                                   </cellValueFactory>
                               </TableColumn>
-                              <TableColumn fx:id="dataEnd" prefWidth="85.0" text="data-end">
+                              <TableColumn fx:id="dataEnd" prefWidth="73.5999755859375" text="Odbiór do">
                                   <cellValueFactory>
                                       <PropertyValueFactory property="data_end" />
                                   </cellValueFactory>
                               </TableColumn>
-                              <TableColumn fx:id="automatOdb" prefWidth="81.0" text="idAOdb">
+                              <TableColumn fx:id="automatOdb" prefWidth="104.79998779296875" text="ID A. nadawcy">
                                   <cellValueFactory>
                                       <PropertyValueFactory property="idAutomatNad" />
                                   </cellValueFactory>
                               </TableColumn>
 
-                              <TableColumn fx:id="automatNad" prefWidth="74.0" text="idANad">
+                              <TableColumn fx:id="automatNad" prefWidth="100.0" text="ID A. odbiorcy">
                                   <cellValueFactory>
                                       <PropertyValueFactory property="idAutomatOdb" />
                                   </cellValueFactory>
                               </TableColumn>
-                              <TableColumn fx:id="pickupDate" prefWidth="103.0" text="pickup_date">
+                              <TableColumn fx:id="pickupDate" prefWidth="83.2000732421875" text="Odebrano">
                               <cellValueFactory>
                                   <PropertyValueFactory property="pickup_date" />
                               </cellValueFactory>
@@ -129,7 +129,7 @@
                         </AnchorPane>
                     </items>
                 </SplitPane>
-            <Button fx:id="idPackages" layoutX="66.0" layoutY="472.0" mnemonicParsing="false" onAction="#onPackagesClick" text="Packages" />
+            <Button fx:id="idPackages" layoutX="66.0" layoutY="472.0" mnemonicParsing="false" onAction="#onPackagesClick" text="POKAŻ" />
             <Button fx:id="sendButton" layoutX="234.0" layoutY="422.0" mnemonicParsing="false" onAction="#onSendButtonClick" text="Zmień status paczki na send" />
             <TextField fx:id="idSend" layoutX="234.0" layoutY="497.0" promptText="XX" />
             <Button fx:id="idPickup" layoutX="466.0" layoutY="422.0" mnemonicParsing="false" onAction="#onPickupButton" text="Zmień status paczki na pickup" />
