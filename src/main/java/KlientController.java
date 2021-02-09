@@ -247,7 +247,7 @@ public class KlientController {
             //ResultSet rs1 = dbUtil.dbExecuteQuery(st1);
             //ResultSet rs2 = dbUtil.dbExecuteQuery(st2);
 
-            packagesDAO.insertNewPack(inputSize.getText(),inputOdbiorca.getText(),inputAdrOdb.getText(),idNadawcy.getText(),inputPaczNad.getText());
+            packagesDAO.insertNewPack(inputSize.getText(),inputOdbiorca.getText(),inputAdrOdb.getText(),inputUserID.getText(),inputPaczNad.getText());
 
         }catch (SQLException e){
             consoleTextArea.appendText("Error occurred while INSERT Operation.");
