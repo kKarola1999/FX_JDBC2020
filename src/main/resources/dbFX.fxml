@@ -34,12 +34,12 @@
                                 <Button fx:id="btnSignIn" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onBtnSignIn" prefHeight="26.0" prefWidth="190.0" text="ZAREJESTRUJ SIĘ " />
                             </children>
                         </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                              <Button fx:id="disconnectButton" disable="true" mnemonicParsing="false" onAction="#disconnectButtonPressed" text="ROZŁĄCZ" />
-                        <Button fx:id="btnShowPack" mnemonicParsing="false" onAction="#onBtnShowPack" text="Pokaż Paczki" />
-                     </children>
-                  </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <Button fx:id="disconnectButton" disable="true" mnemonicParsing="false" onAction="#disconnectButtonPressed" text="ROZŁĄCZ" />
+                                <Button fx:id="btnShowPack" mnemonicParsing="false" onAction="#onBtnShowPack" text="Pokaż Paczki" />
+                            </children>
+                        </HBox>
                         <TextArea fx:id="consoleTextArea" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
                     </children>
                 </VBox>
@@ -50,119 +50,119 @@
                 <ImageView fx:id="imageCilentView" fitHeight="342.0" fitWidth="435.0" layoutX="33.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" />
             </children>
         </AnchorPane>
-      <HBox prefHeight="387.0" prefWidth="600.0">
-         <children>
-            <VBox prefHeight="400.0" prefWidth="600.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Paczki nadane: " textAlignment="CENTER" wrappingWidth="599.3765563964844" />
-                  <TableView fx:id="nadwcaTabel" prefHeight="202.0" prefWidth="414.0">
-                     <columns>
-                        <TableColumn fx:id="colNad1" prefWidth="60.79998856782913" text="Id paczki" >
-                         <cellValueFactory>
-                             <PropertyValueFactory property="idPaczki" />
-                         </cellValueFactory>
-                        </TableColumn>
-                         <TableColumn fx:id="colNad2" prefWidth="60.799983978271484" text="data nadania" >
-                         <cellValueFactory>
-                             <PropertyValueFactory property="dataNadania" />
-                         </cellValueFactory>
-                         </TableColumn>
-                         <TableColumn fx:id="colNad3" prefWidth="64.79995727539062" text="data odbebrania" >
-                         <cellValueFactory>
-                             <PropertyValueFactory property="dataOdebrania" />
-                         </cellValueFactory>
-                         </TableColumn>
-                         <TableColumn fx:id="colNad4" prefWidth="80.00001525878906" text="id automatu nad." >
-                         <cellValueFactory>
-                             <PropertyValueFactory property="idAutomatuNadawczego" />
-                         </cellValueFactory>
-                         </TableColumn>
-                         <TableColumn fx:id="colNad5" prefWidth="79.20001220703125" text="adres nadania " >
-                         <cellValueFactory>
-                             <PropertyValueFactory property="adresNadania" />
-                         </cellValueFactory>
-                         </TableColumn>
-                         <TableColumn fx:id="colNad6" prefWidth="77.5999755859375" text="odbiorca " >
-                         <cellValueFactory>
-                             <PropertyValueFactory property="odbiorca" />
-                         </cellValueFactory>
-                         </TableColumn>
-                         <TableColumn fx:id="colNad7" prefWidth="99.99993896484375" text="adres odbiorcy " >
-                         <cellValueFactory>
-                             <PropertyValueFactory property="adresOdbiorcy" />
-                         </cellValueFactory>
-                         </TableColumn>
-                         <TableColumn fx:id="colNad8" prefWidth="81.60003662109375" text=" id automatu odbiorczego " >
-                         <cellValueFactory>
-                             <PropertyValueFactory property="IdAutomatuOdbiorczego" />
-                         </cellValueFactory>
-                         </TableColumn>
-                     </columns>
-                  </TableView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Paczki do odebrania: " textAlignment="CENTER" wrappingWidth="599.9343872070312" />
-                  <TableView fx:id="paczkiOdebraneTable" prefHeight="200.0" prefWidth="200.0">
-                     <columns>
-                        <TableColumn fx:id="colOdb1" prefWidth="62.39999467134476" text="id paczki">
-                         <cellValueFactory>
-                             <PropertyValueFactory property="idPackages" />
-                         </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn fx:id="colOdb2" prefWidth="58.39999008178711" text="data nadania ">
-                         <cellValueFactory>
-                             <PropertyValueFactory property="send_date" />
-                         </cellValueFactory>
-                     </TableColumn>
-                        <TableColumn fx:id="colOdb3" prefWidth="94.39999389648438" text="ostatni termin odbioru">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="data_end" />
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn fx:id="colOdb4" prefWidth="52.80000305175781" text="nadawca">
-                         <cellValueFactory>
-                             <PropertyValueFactory property="idClientNad" />
-                         </cellValueFactory>
-                     </TableColumn>
-                        <TableColumn fx:id="colOdb5" prefWidth="103.20001220703125" text="adres nadawcy">
-                         <cellValueFactory>
-                         <PropertyValueFactory property="adresNadawcy" />
-                     </cellValueFactory>
-                     </TableColumn>
-                        <TableColumn fx:id="colOdb6" prefWidth="112.0" text="id automatu odb">
-                         <cellValueFactory>
-                             <PropertyValueFactory property="idAutomatOdb" />
-                         </cellValueFactory>
-                     </TableColumn>
-                        <TableColumn fx:id="colOdb7" prefWidth="116.79998779296875" text="adres paczkomatu">
-                         <cellValueFactory>
-                             <PropertyValueFactory property="adresAutomatuOdbiorczego" />
-                         </cellValueFactory>
-                     </TableColumn>
-                     </columns>
-                  </TableView>
-                  <VBox prefHeight="124.0" prefWidth="600.0">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nadaj paczkę:" textAlignment="CENTER" wrappingWidth="179.8179931640625" />
-                        <TextField fx:id="inputAdrOdb" prefHeight="26.0" prefWidth="46.0" promptText="Adres odbiorcy:" />
-                        <TextField fx:id="inputOdbiorca" promptText="Odbiorca:" />
-                        <Spinner fx:id="spinner" editable="true" prefHeight="26.0" prefWidth="182.0" />
-                        <TextField fx:id="inputPaczNad" promptText="Adres paczkomatu nadawczego:">
-                           <font>
-                              <Font size="11.0" />
-                           </font>
-                        </TextField>
-                        <BorderPane prefHeight="200.0" prefWidth="200.0">
-                           <right>
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="238.0" text="Odbierz paczkę " BorderPane.alignment="CENTER" />
-                           </right>
-                           <left>
-                              <Button fx:id="btnNadajPaczke" mnemonicParsing="false" onAction="#onBtnNadajPaczkę" prefHeight="26.0" prefWidth="238.0" text="Nadaj paczkę" textAlignment="CENTER" BorderPane.alignment="CENTER" />
-                           </left>
-                        </BorderPane>
-                     </children>
-                  </VBox>
-               </children>
-            </VBox>
-         </children>
-      </HBox>
+        <HBox prefHeight="387.0" prefWidth="600.0">
+            <children>
+                <VBox prefHeight="400.0" prefWidth="600.0">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Paczki nadane: " textAlignment="CENTER" wrappingWidth="599.3765563964844" />
+                        <TableView fx:id="nadwcaTabel" prefHeight="202.0" prefWidth="414.0">
+                            <columns>
+                                <TableColumn fx:id="colNad1" prefWidth="60.79998856782913" text="Id paczki" >
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="idPaczki" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="colNad2" prefWidth="60.799983978271484" text="data nadania" >
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="dataNadania" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="colNad3" prefWidth="64.79995727539062" text="data odbebrania" >
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="dataOdebrania" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="colNad4" prefWidth="80.00001525878906" text="id automatu nad." >
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="idAutomatuNadawczego" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="colNad5" prefWidth="79.20001220703125" text="adres nadania " >
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="adresNadania" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="colNad6" prefWidth="77.5999755859375" text="odbiorca " >
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="odbiorca" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="colNad7" prefWidth="99.99993896484375" text="adres odbiorcy " >
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="adresOdbiorcy" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="colNad8" prefWidth="81.60003662109375" text=" id automatu odbiorczego " >
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="IdAutomatuOdbiorczego" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                            </columns>
+                        </TableView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Paczki do odebrania: " textAlignment="CENTER" wrappingWidth="599.9343872070312" />
+                        <TableView fx:id="paczkiOdebraneTable" prefHeight="200.0" prefWidth="200.0">
+                            <columns>
+                                <TableColumn fx:id="colOdb1" prefWidth="62.39999467134476" text="id paczki">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="idPackages" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="colOdb2" prefWidth="58.39999008178711" text="data nadania ">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="send_date" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="colOdb3" prefWidth="94.39999389648438" text="ostatni termin odbioru">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="data_end" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="colOdb4" prefWidth="52.80000305175781" text="nadawca">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="idClientNad" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="colOdb5" prefWidth="103.20001220703125" text="adres nadawcy">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="adresNadawcy" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="colOdb6" prefWidth="112.0" text="id automatu odb">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="idAutomatOdb" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="colOdb7" prefWidth="116.79998779296875" text="adres paczkomatu">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="adresAutomatuOdbiorczego" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                            </columns>
+                        </TableView>
+                        <VBox prefHeight="124.0" prefWidth="600.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nadaj paczkę:" textAlignment="CENTER" wrappingWidth="179.8179931640625" />
+                                <TextField fx:id="inputAdrOdb" prefHeight="26.0" prefWidth="46.0" promptText="Adres odbiorcy:" />
+                                <TextField fx:id="inputOdbiorca" promptText="Odbiorca:" />
+                                <Spinner fx:id="spinner" editable="true" prefHeight="26.0" prefWidth="182.0" />
+                                <TextField fx:id="inputPaczNad" promptText="Adres paczkomatu nadawczego:">
+                                    <font>
+                                        <Font size="11.0" />
+                                    </font>
+                                </TextField>
+                                <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                    <right>
+                                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="238.0" text="Odbierz paczkę " BorderPane.alignment="CENTER" />
+                                    </right>
+                                    <left>
+                                        <Button fx:id="btnNadajPaczke" mnemonicParsing="false" onAction="#onBtnNadajPaczkę" prefHeight="26.0" prefWidth="238.0" text="Nadaj paczkę" textAlignment="CENTER" BorderPane.alignment="CENTER" />
+                                    </left>
+                                </BorderPane>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
     </items>
 </SplitPane>

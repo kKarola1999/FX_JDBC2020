@@ -1,10 +1,13 @@
+import controller.DBUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class SignInController {
@@ -37,7 +40,27 @@ public class SignInController {
     private ImageView imageSignInView;
 
     @FXML
-    void onBtnSingIn(ActionEvent event) {
+    private TextArea textArea;
+
+    //KlientController klientController=new KlientController();
+    //private DBUtil dbUtil =klientController.getDbUtil();
+    //private RacketDAO racketDAO=new RacketDAO();
+
+
+
+    @FXML
+    void onBtnSingIn(ActionEvent event) throws SQLException, ClassNotFoundException {
+
+        try {
+
+            //if (!idInput.getText().equals(null)) {
+
+            KlientController.racketDAO.insertClient(idInput.getText(),ImieInput.getText(),AdresInput.getText(),emailInput.getText(),nrKontInput.getText());
+            //dbUtil.dbConnect();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            throw e;
+        }
 
     }
 
@@ -50,6 +73,7 @@ public class SignInController {
         assert nrKontInput != null : "fx:id=\"nrKontInput\" was not injected: check your FXML file 'sign_in.fxml'.";
         assert signInBtn != null : "fx:id=\"signInBtn\" was not injected: check your FXML file 'sign_in.fxml'.";
         assert imageSignInView != null : "fx:id=\"imageSignInView\" was not injected: check your FXML file 'sign_in.fxml'.";
+        assert textArea != null : "fx:id=\"textArea\" was not injected: check your FXML file 'sign_in.fxml'.";
 
     }
 }

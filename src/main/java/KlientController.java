@@ -114,10 +114,17 @@ public class KlientController {
     @FXML
     private Button btnNadajPaczke;
 
-    private DBUtil dbUtil;
-    private RacketDAO racketDAO;
+    public static DBUtil dbUtil;
+    public static RacketDAO racketDAO;
 
+    public DBUtil getDbUtil() {
+        return dbUtil;
+    }
 
+    public RacketDAO getRacketDAO() {
+        return racketDAO;
+
+    }
 
 
     @FXML
@@ -145,7 +152,6 @@ public class KlientController {
         disconnectButton.setDisable(true);
         /*
         addRacketButton.setDisable(true);
-
         selectRacketButton.setDisable(true);
         showRacketsButton.setDisable(true);
         selectRacketNameTextField.setDisable(true);
@@ -253,4 +259,4 @@ public class KlientController {
         assert paczkiOdebraneTable != null : "fx:id=\"paczkiOdebraneTable\" was not injected: check your FXML file 'dbFX.fxml'.";
 
     }
-    }
+}

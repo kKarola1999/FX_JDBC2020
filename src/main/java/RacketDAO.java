@@ -15,6 +15,9 @@ public class RacketDAO {
         this.consoleTextArea = consoleTextArea;
     }
 
+    public RacketDAO() {
+    }
+
     private ObservableList<Clients> getClientsList(ResultSet rs) throws SQLException {
 
         ObservableList<Clients> clientList = FXCollections.observableArrayList();
@@ -123,6 +126,8 @@ public class RacketDAO {
 
         return receiverViewList;
     }
+
+
 
 /*
     public ObservableList<Racket> searchRackets(String manuf) throws SQLException, ClassNotFoundException {
@@ -284,6 +289,8 @@ public class RacketDAO {
             throw e;
         }
     }
+
+
 
 
 /*

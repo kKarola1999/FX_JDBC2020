@@ -1,5 +1,7 @@
 import javafx.beans.property.*;
 
+import javafx.beans.property.*;
+
 public class SenderView {
     private IntegerProperty idPaczki;
     private StringProperty dataNadania;
