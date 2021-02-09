@@ -365,10 +365,8 @@ public class PackagesDAO {
             StringBuilder sb = new StringBuilder("INSERT INTO packages VALUES((select count(idSlot) from slots)+7,'");
             sb.append(size);
             sb.append("',null, curdate(), null, null, null,'");
-            //sb.append("(select idClient from clients where ImieNazwisko=' "+idOdb +"')");
             sb.append(idOdb);
             sb.append("','");
-            //sb.append("(select idAutomat from automat where adres='"+idAOd +"')");
             sb.append(idAOd);
             sb.append("','");
             sb.append(idCliNad);
