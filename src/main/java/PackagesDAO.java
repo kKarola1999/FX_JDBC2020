@@ -5,17 +5,17 @@ import javafx.scene.control.TextArea;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class RacketDAO {
+public class PackagesDAO {
 
     private DBUtil dbUtil;
     private TextArea consoleTextArea;
 
-    public RacketDAO(DBUtil dbUtil, TextArea consoleTextArea) {
+    public PackagesDAO(DBUtil dbUtil, TextArea consoleTextArea) {
         this.dbUtil = dbUtil;
         this.consoleTextArea = consoleTextArea;
     }
 
-    public RacketDAO() {
+    public PackagesDAO() {
     }
 
     private ObservableList<Clients> getClientsList(ResultSet rs) throws SQLException {
@@ -247,7 +247,7 @@ public class RacketDAO {
             consoleTextArea.appendText(insertStmt + "\n");
 
         } catch (SQLException e) {
-            consoleTextArea.appendText("Error occurred while INSERT Operation.");
+            consoleTextArea.appendText("Error occurred while update Operation.");
             throw e;
         }
     }
@@ -265,7 +265,7 @@ public class RacketDAO {
             consoleTextArea.appendText(insertStmt + "\n");
 
         } catch (SQLException e) {
-            consoleTextArea.appendText("Error occurred while INSERT Operation.");
+            consoleTextArea.appendText("Error occurred while update Operation.");
             throw e;
         }
     }

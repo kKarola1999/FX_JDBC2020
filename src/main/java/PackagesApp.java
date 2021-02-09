@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class RacketApp extends Application {
+public class PackagesApp extends Application {
 
     private static Scene scene;
 

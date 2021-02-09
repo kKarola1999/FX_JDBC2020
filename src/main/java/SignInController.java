@@ -1,8 +1,6 @@
-import controller.DBUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
@@ -48,7 +46,7 @@ public class SignInController {
     void onBtnSingIn(ActionEvent event) throws SQLException, ClassNotFoundException {
 
         try {
-            KlientController.racketDAO.insertClient(idInput.getText(),ImieInput.getText(),AdresInput.getText(),emailInput.getText(),nrKontInput.getText());
+            KlientController.packagesDAO.insertClient(idInput.getText(),ImieInput.getText(),AdresInput.getText(),emailInput.getText(),nrKontInput.getText());
 
 
         } catch (SQLException | ClassNotFoundException e) {

@@ -49,7 +49,7 @@ public class startController {
         void onKlientButton(ActionEvent event) {
             Parent root;
             try {
-                root = FXMLLoader.load(getClass().getClassLoader().getResource("dbFX.fxml"), resources);
+                root = FXMLLoader.load(getClass().getClassLoader().getResource("KlientView.fxml"), resources);
                 Stage stage = new Stage();
                 stage.setTitle("Klient");
                 stage.setScene(new Scene(root, 1000, 600));

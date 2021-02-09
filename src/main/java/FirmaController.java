@@ -107,13 +107,13 @@ public class FirmaController {
 
 
     private DBUtil dbUtil;
-    private RacketDAO racketDAO;
+    private PackagesDAO packagesDAO;
 
     @FXML
     void connectButtonPressed(ActionEvent event) throws SQLException, ClassNotFoundException {
 
         dbUtil = new DBUtil(userTextField.getText(), passwordTextField.getText(), consoleTextArea);
-        racketDAO = new RacketDAO(dbUtil, consoleTextArea);
+        packagesDAO = new PackagesDAO(dbUtil, consoleTextArea);
 
         dbUtil.dbConnect();
 
@@ -147,11 +147,11 @@ public class FirmaController {
         try {
 
             statystykaTable.getItems().clear();
-            ObservableList<Statystyka> statystykaData = racketDAO.showAllZysk(podajDate.getText(),podaiIdAutomatu.getText());
+            ObservableList<Statystyka> statystykaData = packagesDAO.showAllZysk(podajDate.getText(),podaiIdAutomatu.getText());
             populateZysk(statystykaData);
 
         } catch (SQLException | ClassNotFoundException e) {
-            consoleTextArea.appendText("Error occurred while getting rackets from DB.\n");
+            consoleTextArea.appendText("Error occurred while getting statystyka from DB.\n");
             throw e;
         }
 
@@ -162,11 +162,11 @@ public class FirmaController {
         try {
 
             packagesTable.getItems().clear();
-            ObservableList<PackagesView> packagesData = racketDAO.showAllPackagesView();
+            ObservableList<PackagesView> packagesData = packagesDAO.showAllPackagesView();
             populatePackages(packagesData);
 
         } catch (SQLException | ClassNotFoundException e) {
-            consoleTextArea.appendText("Error occurred while getting rackets from DB.\n");
+            consoleTextArea.appendText("Error occurred while getting paczki from DB.\n");
             throw e;
         }
 
@@ -178,12 +178,12 @@ public class FirmaController {
         try {
 
             if (!idSend.getText().equals(null)) {
-                racketDAO.updatePackages(idSend.getText());
+                packagesDAO.updatePackages(idSend.getText());
                 consoleTextArea.appendText("Update for " + idSend.getText() + "\n");
 
             }
         } catch (SQLException | ClassNotFoundException e) {
-            consoleTextArea.appendText("Error occurred while inserting racket.\n");
+            consoleTextArea.appendText("Error occurred while updating packages.\n");
             throw e;
         }
 
@@ -193,12 +193,12 @@ public class FirmaController {
         try {
 
             if (!idSend.getText().equals(null)) {
-                racketDAO.updatePackagesPickup(idTextPickup.getText());
+                packagesDAO.updatePackagesPickup(idTextPickup.getText());
                 consoleTextArea.appendText("Update for " + idSend.getText() + "\n");
 
             }
         } catch (SQLException | ClassNotFoundException e) {
-            consoleTextArea.appendText("Error occurred while inserting racket.\n");
+            consoleTextArea.appendText("Error occurred while updating packages.\n");
             throw e;
         }
 
