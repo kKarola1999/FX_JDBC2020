@@ -362,30 +362,32 @@ public class PackagesDAO {
     }
     public void insertNewPack(String size, String idOdb, String idAOd, String idCliNad,String idANad ) throws SQLException, ClassNotFoundException {
 
-        StringBuilder sb = new StringBuilder("INSERT INTO packages VALUES('Count(packages)+1', '");
-        sb.append(size);
-        sb.append("',null, 'curdate()', null, null, null, '");
-        sb.append(idOdb);
-        sb.append("','");
-        sb.append(idAOd);
-        sb.append("','");
-        sb.append(idCliNad);
-        sb.append("','");
-        sb.append(idANad);
-        sb.append("');");
-        String insertStmt = sb.toString();
+            StringBuilder sb = new StringBuilder("INSERT INTO packages VALUES((select count(idSlot) from slots)+7,'");
+            sb.append(size);
+            sb.append("',null, curdate(), null, null, null,'");
+            //sb.append("(select idClient from clients where ImieNazwisko=' "+idOdb +"')");
+            sb.append(idOdb);
+            sb.append("','");
+            //sb.append("(select idAutomat from automat where adres='"+idAOd +"')");
+            sb.append(idAOd);
+            sb.append("','");
+            sb.append(idCliNad);
+            sb.append("','");
+            sb.append(idANad);
+            sb.append("');");
+            String insertStmt = sb.toString();
 
-        try {
+            try {
 
-            dbUtil.dbExecuteUpdate(insertStmt);
-            consoleTextArea.appendText(insertStmt + "\n");
+                dbUtil.dbExecuteUpdate(insertStmt);
+                consoleTextArea.appendText(insertStmt + "\n");
 
-        } catch (SQLException e) {
-            consoleTextArea.appendText("Error occurred while INSERT Operation.");
-            throw e;
+            } catch (SQLException e) {
+                consoleTextArea.appendText("Error occurred while INSERT Operation.");
+                throw e;
+            }
+
         }
 
+
     }
-
-
-}

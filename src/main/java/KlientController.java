@@ -219,16 +219,16 @@ public class KlientController {
 
     @FXML
     void onBtnNadajPaczkę(ActionEvent event) throws SQLException, ClassNotFoundException {
-        String adresOdbiorcy =  inputAdrOdb.getText().toString();
+        //String adresOdbiorcy =  inputAdrOdb.getText();
     // todo wywala błąd że nie ma kolumny o nazwie klienta
 // todo  size jest jako tekst, nie dałem rady zriobic cspinnera ani "listy" :C
         try {
-            String st1 = "SELECT idClient FROM clients where ImieNazwisko="+ inputOdbiorca.getText()+";";
-            String st2 = "SELECT idAutomat FROM automat where adres="+adresOdbiorcy+";";
-            ResultSet rs1 = dbUtil.dbExecuteQuery(st1);
-            ResultSet rs2 = dbUtil.dbExecuteQuery(st2);
+            //String st1 = "(SELECT idClient FROM clients where ImieNazwisko='"+ inputOdbiorca.getText()+"')";
+            //String st2 = "(SELECT idAutomat FROM automat where adres='"+adresOdbiorcy+"')";
+            //ResultSet rs1 = dbUtil.dbExecuteQuery(st1);
+            //ResultSet rs2 = dbUtil.dbExecuteQuery(st2);
 
-            KlientController.packagesDAO.insertNewPack(inputSize.getText(),rs1.toString(),rs2.toString(),idNadawcy.getText(),inputPaczNad.getText());
+            packagesDAO.insertNewPack(inputSize.getText(),inputOdbiorca.getText(),inputAdrOdb.getText(),idNadawcy.getText(),inputPaczNad.getText());
 
         }catch (SQLException e){
             consoleTextArea.appendText("Error occurred while INSERT Operation.");
