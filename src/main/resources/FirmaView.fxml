@@ -118,8 +118,8 @@
                         </Text>
                         <Text layoutX="416.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Podaj id automatu" />
                         <Text layoutX="436.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Podaj datę" />
-                        <TextField fx:id="podaiIdAutomatu" layoutX="543.0" layoutY="41.0" prefHeight="26.0" prefWidth="121.0" />
-                        <TextField fx:id="podajDate" layoutX="543.0" layoutY="80.0" prefHeight="25.0" prefWidth="121.0" />
+                        <TextField fx:id="podaiIdAutomatu" layoutX="543.0" layoutY="41.0" prefHeight="26.0" prefWidth="121.0" promptText="XX" />
+                        <TextField fx:id="podajDate" layoutX="543.0" layoutY="80.0" prefHeight="25.0" prefWidth="121.0" promptText="RRRR-MM-DD" />
                         <Text layoutX="282.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Widok paczek">
                            <font>
                               <Font size="18.0" />
@@ -131,12 +131,12 @@
                 </SplitPane>
             <Button fx:id="idPackages" layoutX="66.0" layoutY="472.0" mnemonicParsing="false" onAction="#onPackagesClick" text="Packages" />
             <Button fx:id="sendButton" layoutX="234.0" layoutY="422.0" mnemonicParsing="false" onAction="#onSendButtonClick" text="Zmień status paczki na send" />
-            <TextField fx:id="idSend" layoutX="234.0" layoutY="497.0" />
+            <TextField fx:id="idSend" layoutX="234.0" layoutY="497.0" promptText="XX" />
             <Button fx:id="idPickup" layoutX="466.0" layoutY="422.0" mnemonicParsing="false" onAction="#onPickupButton" text="Zmień status paczki na pickup" />
             <Text layoutX="46.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pokaż widok paczek" />
             <Text layoutX="268.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wpisz id paczki" />
             <Text layoutX="513.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wpisz id paczki" />
-            <TextField fx:id="idTextPickup" layoutX="479.0" layoutY="497.0" />
+            <TextField fx:id="idTextPickup" layoutX="479.0" layoutY="497.0" promptText="XX" />
             </children>
         </AnchorPane>
     </items>

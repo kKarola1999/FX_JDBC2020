@@ -39,12 +39,8 @@ public class SignInController {
     @FXML
     private ImageView imageSignInView;
 
-    @FXML
-    private TextArea textArea;
 
-    //KlientController klientController=new KlientController();
-    //private DBUtil dbUtil =klientController.getDbUtil();
-    //private RacketDAO racketDAO=new RacketDAO();
+
 
 
 
@@ -52,11 +48,8 @@ public class SignInController {
     void onBtnSingIn(ActionEvent event) throws SQLException, ClassNotFoundException {
 
         try {
-
-            //if (!idInput.getText().equals(null)) {
-
             KlientController.racketDAO.insertClient(idInput.getText(),ImieInput.getText(),AdresInput.getText(),emailInput.getText(),nrKontInput.getText());
-            //dbUtil.dbConnect();
+
 
         } catch (SQLException | ClassNotFoundException e) {
             throw e;
@@ -73,7 +66,6 @@ public class SignInController {
         assert nrKontInput != null : "fx:id=\"nrKontInput\" was not injected: check your FXML file 'sign_in.fxml'.";
         assert signInBtn != null : "fx:id=\"signInBtn\" was not injected: check your FXML file 'sign_in.fxml'.";
         assert imageSignInView != null : "fx:id=\"imageSignInView\" was not injected: check your FXML file 'sign_in.fxml'.";
-        assert textArea != null : "fx:id=\"textArea\" was not injected: check your FXML file 'sign_in.fxml'.";
 
     }
 }
