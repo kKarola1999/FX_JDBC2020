@@ -1,7 +1,6 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -36,7 +35,7 @@ public class startController {
                 stage.setScene(new Scene(root, 1000, 600));
                 stage.show();
                 // Hide this current window (if this is what you want)
-                ((Node)(event.getSource())).getScene().getWindow().hide();
+//                ((Node)(event.getSource())).getScene().getWindow().hide();
             }
             catch (IOException e) {
                 e.printStackTrace();
@@ -55,7 +54,7 @@ public class startController {
                 stage.setScene(new Scene(root, 1000, 600));
                 stage.show();
                 // Hide this current window (if this is what you want)
-                ((Node)(event.getSource())).getScene().getWindow().hide();
+//                ((Node)(event.getSource())).getScene().getWindow().hide();
             }
             catch (IOException e) {
                 e.printStackTrace();

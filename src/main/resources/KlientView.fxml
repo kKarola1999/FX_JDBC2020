@@ -151,34 +151,30 @@
                                 <TextField fx:id="inputOdbiorca" promptText="ID odbiorcy:" />
                         <BorderPane prefHeight="200.0" prefWidth="200.0">
                            <left>
-                              <TextField fx:id="inputSize" promptText="Rozmiar paczki:" BorderPane.alignment="CENTER" />
+                              <TextField fx:id="inputSize" prefHeight="26.0" prefWidth="151.0" promptText="Rozmiar paczki:" BorderPane.alignment="CENTER" />
                            </left>
                         </BorderPane>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <BorderPane prefHeight="50.0" prefWidth="474.0">
+                                      <TextField fx:id="inputPaczNad" prefHeight="24.0" prefWidth="165.0" promptText="ID paczkomatu nadawczego: ">
+                                          <font>
+                                              <Font size="11.0" />
+                                          </font>
+                                      </TextField>
+                              <BorderPane prefHeight="26.0" prefWidth="441.0">
                                  <left>
-                                    <VBox prefHeight="50.0" prefWidth="149.0" BorderPane.alignment="CENTER">
-                                       <children>
-                                                  <TextField fx:id="inputPaczNad" prefHeight="24.0" prefWidth="129.0" promptText="ID paczkomatu nadawczego: ">
-                                                      <font>
-                                                          <Font size="11.0" />
-                                                      </font>
-                                                  </TextField>
-                                          <TextField fx:id="idNadawcy" promptText="ID nadawcy" />
-                                       </children>
-                                    </VBox>
+                                    <VBox prefHeight="50.0" prefWidth="149.0" BorderPane.alignment="CENTER" />
                                  </left>
                               </BorderPane>
-                              <TextField fx:id="idPickUp" prefHeight="26.0" prefWidth="125.0" promptText="Id odbieranej paczki" />
+                              <TextField fx:id="idPickUp" prefHeight="26.0" prefWidth="135.0" promptText="Id odbieranej paczki" />
                            </children>
                         </HBox>
                                 <BorderPane prefHeight="200.0" prefWidth="200.0">
                                     <right>
-                                        <Button fx:id="btnPickUp" mnemonicParsing="false" onAction="#onBtnPickUp" prefHeight="26.0" prefWidth="126.0" text="Odbierz paczkę " BorderPane.alignment="CENTER" />
+                                        <Button fx:id="btnPickUp" mnemonicParsing="false" onAction="#onBtnPickUp" prefHeight="26.0" prefWidth="131.0" text="Odbierz paczkę " BorderPane.alignment="CENTER" />
                                     </right>
                                     <left>
-                                        <Button fx:id="btnNadajPaczke" mnemonicParsing="false" onAction="#onBtnNadajPaczkę" prefHeight="26.0" prefWidth="238.0" text="Nadaj paczkę" textAlignment="CENTER" BorderPane.alignment="CENTER" />
+                                        <Button fx:id="btnNadajPaczke" mnemonicParsing="false" onAction="#onBtnNadajPaczkę" prefHeight="26.0" prefWidth="148.0" text="Nadaj paczkę" textAlignment="CENTER" BorderPane.alignment="CENTER" />
                                     </left>
                                 </BorderPane>
                             </children>
