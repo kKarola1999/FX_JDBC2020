@@ -45,6 +45,7 @@
                      </children>
                   </VBox>
                         <TextArea fx:id="consoleTextArea" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
+                  <Button fx:id="idClientBase" mnemonicParsing="false" onAction="#onClientBaseClick" text="ClientBase" />
                     </children>
                 </VBox>
             </children>

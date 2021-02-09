@@ -38,6 +38,23 @@ public class PackagesDAO {
         return clientList;
     }
 
+    private ObservableList<ClientBase> getClientBaseList(ResultSet rs) throws SQLException {
+
+        ObservableList<ClientBase> clientBaseList = FXCollections.observableArrayList();
+
+        while (rs.next()) {
+
+            ClientBase cb = new ClientBase();
+            cb.setIdClient(rs.getInt("idClient"));
+            cb.setImieNazwisko(rs.getString("ImieNazwisko"));
+
+            clientBaseList.add(cb);
+            //clientList.add(a);
+        }
+
+        return clientBaseList;
+    }
+
     private  ObservableList<SenderView> getSenderList(ResultSet rs) throws SQLException{
         ObservableList<SenderView> senderList = FXCollections.observableArrayList();
         while (rs.next()){
@@ -308,6 +325,25 @@ public class PackagesDAO {
     }
 
 
+    public ObservableList<ClientBase> showClientBase() throws SQLException, ClassNotFoundException {
+
+        String selectStmt = "SELECT * FROM clientBase;";
+
+        try {
+
+            ResultSet resultSet = dbUtil.dbExecuteQuery(selectStmt);
+
+            ObservableList<ClientBase> ClientBaseList = getClientBaseList(resultSet);
+            consoleTextArea.appendText(selectStmt);
+
+            return ClientBaseList;
+
+
+        } catch (SQLException e) {
+            consoleTextArea.appendText("While searching widok bazy klientów, an error occurred. \n");
+            throw e;
+        }
+    }
 
 
 /*
