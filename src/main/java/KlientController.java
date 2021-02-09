@@ -124,7 +124,7 @@ public class KlientController {
     private TextField idNadawcy;
 
     @FXML
-    private Button ClientBase;
+    private Button idClientBase;
 
     public static DBUtil dbUtil;
     public static PackagesDAO packagesDAO;
@@ -154,6 +154,7 @@ public class KlientController {
         btnShowPack.setDisable(false);
         btnNadajPaczke.setDisable(false);
         btnPickUp.setDisable(false);
+        idClientBase.setDisable(false);
 
     }
 
@@ -168,7 +169,7 @@ public class KlientController {
         btnShowPack.setDisable(true);
         btnNadajPaczke.setDisable(true);
         btnPickUp.setDisable(true);
-
+        idClientBase.setDisable(true);
 
 
     }
@@ -303,10 +304,13 @@ public class KlientController {
         assert btnPickUp != null : "fx:id=\"btnPickUp\" was not injected: check your FXML file 'KlientView.fxml'.";
         assert idNadawcy != null : "fx:id=\"idNadawcy\" was not injected: check your FXML file 'KlientView.fxml'.";
         assert inputSize != null : "fx:id=\"inputSize\" was not injected: check your FXML file 'KlientView.fxml'.";
+        assert idClientBase != null : "fx:id=\"idClientBase\" was not injected: check your FXML file 'KlientView.fxml'.";
+
         disconnectButton.setDisable(true);
         btnShowPack.setDisable(true);
         btnNadajPaczke.setDisable(true);
         btnPickUp.setDisable(true);
+        idClientBase.setDisable(true);
 
     }
 }
