@@ -25,6 +25,8 @@ public class KlientController {
 
     @FXML
     private TextField userTextField;
+    @FXML
+    private TextField inputUserID;
 
     @FXML
     private PasswordField passwordTextField;
@@ -155,6 +157,7 @@ public class KlientController {
         btnNadajPaczke.setDisable(false);
         btnPickUp.setDisable(false);
         idClientBase.setDisable(false);
+        btnSignIn.setDisable(false);
 
     }
 
@@ -196,9 +199,9 @@ public class KlientController {
 
             paczkiOdebraneTable.getItems().clear();
             nadwcaTabel.getItems().clear();
-            ObservableList<ReceiverView> receiverViewData = packagesDAO.showAllReceiverView();
+            ObservableList<ReceiverView> receiverViewData = packagesDAO.showAllReceiverView(inputUserID.getText());
             populateReceiverView(receiverViewData);
-            ObservableList<SenderView> senderData = packagesDAO.showAllSender();
+            ObservableList<SenderView> senderData = packagesDAO.showAllSender(inputUserID.getText());
             populateSenderView(senderData);
 
 
@@ -311,6 +314,7 @@ public class KlientController {
         btnNadajPaczke.setDisable(true);
         btnPickUp.setDisable(true);
         idClientBase.setDisable(true);
+        btnSignIn.setDisable(true);
 
     }
 }

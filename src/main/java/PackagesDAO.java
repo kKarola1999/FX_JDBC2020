@@ -191,10 +191,15 @@ public class PackagesDAO {
 
     }
 
-    public ObservableList<SenderView> showAllSender () throws SQLException, ClassNotFoundException {
-        String selectStmt  = "SELECT * FROM widok_nadawcy;";
+    public ObservableList<SenderView> showAllSender (String idName) throws SQLException, ClassNotFoundException {
+
+
+        StringBuilder sb = new StringBuilder("SELECT * FROM widok_nadawcy where obiorca='");
+        sb.append(idName);
+        sb.append("';");
+        String insertStmt = sb.toString();
         try{
-            ResultSet resultSet = dbUtil.dbExecuteQuery(selectStmt);
+            ResultSet resultSet = dbUtil.dbExecuteQuery(insertStmt);
             ObservableList<SenderView>senderList =  getSenderList(resultSet);
             consoleTextArea.appendText("");
 
@@ -304,16 +309,21 @@ public class PackagesDAO {
         }
     }
 
-    public ObservableList<ReceiverView> showAllReceiverView() throws SQLException, ClassNotFoundException {
+    public ObservableList<ReceiverView> showAllReceiverView(String idName) throws SQLException, ClassNotFoundException {
 
-        String selectStmt = "SELECT * FROM widok_odbiorcy;";
+
+
+        StringBuilder sb = new StringBuilder("SELECT * FROM widok_odbiorcy where nadawca='");
+        sb.append(idName);
+        sb.append("';");
+        String insertStmt = sb.toString();
 
         try {
 
-            ResultSet resultSet = dbUtil.dbExecuteQuery(selectStmt);
+            ResultSet resultSet = dbUtil.dbExecuteQuery(insertStmt);
 
             ObservableList<ReceiverView> receiverViewList = getReceiverViewList(resultSet);
-            consoleTextArea.appendText(selectStmt);
+            consoleTextArea.appendText(insertStmt);
 
             return receiverViewList;
 

@@ -30,7 +30,7 @@
                         <HBox prefHeight="37.0" prefWidth="220.0">
                             <children>
                                 <Button fx:id="connectButton" mnemonicParsing="false" onAction="#connectButtonPressed" prefHeight="26.0" prefWidth="187.0" text="POŁĄCZ" />
-                                <Button fx:id="btnSignIn" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onBtnSignIn" prefHeight="26.0" prefWidth="190.0" text="ZAREJESTRUJ SIĘ " />
+                                <Button fx:id="btnSignIn" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onBtnSignIn" prefHeight="26.0" prefWidth="190.0" text="DODAJ ODBIORCĘ" />
                             </children>
                         </HBox>
                   <VBox prefHeight="74.0" prefWidth="154.0">
