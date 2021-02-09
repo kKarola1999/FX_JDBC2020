@@ -3,7 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -57,42 +56,42 @@
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Paczki nadane: " textAlignment="CENTER" wrappingWidth="599.3765563964844" />
                         <TableView fx:id="nadwcaTabel" prefHeight="202.0" prefWidth="414.0">
                             <columns>
-                                <TableColumn fx:id="colNad1" prefWidth="60.79998856782913" text="Id paczki" >
+                                <TableColumn fx:id="colNad1" prefWidth="60.79998856782913" text="Id paczki">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="idPaczki" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="colNad2" prefWidth="60.799983978271484" text="data nadania" >
+                                <TableColumn fx:id="colNad2" prefWidth="60.799983978271484" text="data nadania">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="dataNadania" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="colNad3" prefWidth="64.79995727539062" text="data odbebrania" >
+                                <TableColumn fx:id="colNad3" prefWidth="64.79995727539062" text="data odbebrania">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="dataOdebrania" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="colNad4" prefWidth="80.00001525878906" text="id automatu nad." >
+                                <TableColumn fx:id="colNad4" prefWidth="80.00001525878906" text="id automatu nad.">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="idAutomatuNadawczego" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="colNad5" prefWidth="79.20001220703125" text="adres nadania " >
+                                <TableColumn fx:id="colNad5" prefWidth="79.20001220703125" text="adres nadania ">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="adresNadania" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="colNad6" prefWidth="77.5999755859375" text="odbiorca " >
+                                <TableColumn fx:id="colNad6" prefWidth="77.5999755859375" text="odbiorca ">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="odbiorca" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="colNad7" prefWidth="99.99993896484375" text="adres odbiorcy " >
+                                <TableColumn fx:id="colNad7" prefWidth="99.99993896484375" text="adres odbiorcy ">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="adresOdbiorcy" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="colNad8" prefWidth="81.60003662109375" text=" id automatu odbiorczego " >
+                                <TableColumn fx:id="colNad8" prefWidth="81.60003662109375" text=" id automatu odbiorczego ">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="IdAutomatuOdbiorczego" />
                                     </cellValueFactory>
@@ -144,15 +143,29 @@
                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nadaj paczkę:" textAlignment="CENTER" wrappingWidth="179.8179931640625" />
                                 <TextField fx:id="inputAdrOdb" prefHeight="26.0" prefWidth="46.0" promptText="Adres odbiorcy:" />
                                 <TextField fx:id="inputOdbiorca" promptText="Odbiorca:" />
-                                <Spinner fx:id="spinner" editable="true" prefHeight="26.0" prefWidth="182.0" />
-                                <TextField fx:id="inputPaczNad" promptText="Adres paczkomatu nadawczego:">
-                                    <font>
-                                        <Font size="11.0" />
-                                    </font>
-                                </TextField>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0">
+                           <left>
+                              <TextField fx:id="inputSize" promptText="Rozmiar paczki:" BorderPane.alignment="CENTER" />
+                           </left>
+                        </BorderPane>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                                      <TextField fx:id="inputPaczNad" prefHeight="24.0" prefWidth="276.0" promptText="ID paczkomatu nadawczego: ">
+                                          <font>
+                                              <Font size="11.0" />
+                                          </font>
+                                      </TextField>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                 <center>
+                                    <TextField fx:id="idNadawcy" promptText="ID nadawcy" BorderPane.alignment="CENTER" />
+                                 </center>
+                              </BorderPane>
+                              <TextField fx:id="idPickUp" prefHeight="26.0" prefWidth="125.0" promptText="Id odbieranej paczki" />
+                           </children>
+                        </HBox>
                                 <BorderPane prefHeight="200.0" prefWidth="200.0">
                                     <right>
-                                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="238.0" text="Odbierz paczkę " BorderPane.alignment="CENTER" />
+                                        <Button fx:id="btnPickUp" mnemonicParsing="false" onAction="#onBtnPickUp" prefHeight="26.0" prefWidth="126.0" text="Odbierz paczkę " BorderPane.alignment="CENTER" />
                                     </right>
                                     <left>
                                         <Button fx:id="btnNadajPaczke" mnemonicParsing="false" onAction="#onBtnNadajPaczkę" prefHeight="26.0" prefWidth="238.0" text="Nadaj paczkę" textAlignment="CENTER" BorderPane.alignment="CENTER" />

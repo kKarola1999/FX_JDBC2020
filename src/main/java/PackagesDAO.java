@@ -179,7 +179,7 @@ public class PackagesDAO {
         try{
             ResultSet resultSet = dbUtil.dbExecuteQuery(selectStmt);
             ObservableList<SenderView>senderList =  getSenderList(resultSet);
-            consoleTextArea.appendText("ddziała");
+            consoleTextArea.appendText("");
 
             return  senderList;
         } catch (SQLException | ClassNotFoundException e) {
@@ -238,6 +238,23 @@ public class PackagesDAO {
 
 
         StringBuilder sb = new StringBuilder("update packages set status='send' where idPackages='");
+        sb.append(name);
+        sb.append("';");
+        String insertStmt = sb.toString();
+        try {
+
+            dbUtil.dbExecuteUpdate(insertStmt);
+            consoleTextArea.appendText(insertStmt + "\n");
+
+        } catch (SQLException e) {
+            consoleTextArea.appendText("Error occurred while update Operation.");
+            throw e;
+        }
+    }
+    public void updatePickUp(String name) throws SQLException, ClassNotFoundException {
+
+
+        StringBuilder sb = new StringBuilder("update packages set pickup_date=curdate() where idPackages='");
         sb.append(name);
         sb.append("';");
         String insertStmt = sb.toString();
@@ -343,7 +360,32 @@ public class PackagesDAO {
         }
 
     }
+    public void insertNewPack(String size, String idOdb, String idAOd, String idCliNad,String idANad ) throws SQLException, ClassNotFoundException {
 
+        StringBuilder sb = new StringBuilder("INSERT INTO packages VALUES('Count(packages)+1', '");
+        sb.append(size);
+        sb.append("',null, 'curdate()', null, null, null, '");
+        sb.append(idOdb);
+        sb.append("','");
+        sb.append(idAOd);
+        sb.append("','");
+        sb.append(idCliNad);
+        sb.append("','");
+        sb.append(idANad);
+        sb.append("');");
+        String insertStmt = sb.toString();
+
+        try {
+
+            dbUtil.dbExecuteUpdate(insertStmt);
+            consoleTextArea.appendText(insertStmt + "\n");
+
+        } catch (SQLException e) {
+            consoleTextArea.appendText("Error occurred while INSERT Operation.");
+            throw e;
+        }
+
+    }
 
 
 }

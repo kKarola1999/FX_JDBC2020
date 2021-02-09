@@ -1,5 +1,4 @@
 import controller.DBUtil;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -113,6 +113,16 @@ public class KlientController {
 
     @FXML
     private Button btnNadajPaczke;
+    @FXML
+    private TextField inputSize;
+
+    @FXML
+    private Button btnPickUp;
+    @FXML
+    private TextField idPickUp;
+
+    @FXML
+    private TextField idNadawcy;
 
     public static DBUtil dbUtil;
     public static PackagesDAO packagesDAO;
@@ -180,13 +190,7 @@ public class KlientController {
             e.printStackTrace();
         }
     }
-    //spiner config:
-    ObservableList<String> sizes = FXCollections.observableArrayList(
-            "S","M","XL"
-    ) ;
-    SpinnerValueFactory<String> valueFactory = new SpinnerValueFactory.ListSpinnerValueFactory<String>(sizes);
-
-    @FXML
+     @FXML
     void onBtnShowPack(ActionEvent event) throws SQLException, ClassNotFoundException {
         try {
 
@@ -214,11 +218,33 @@ public class KlientController {
 
 
     @FXML
-    void onBtnNadajPaczkę(ActionEvent event) {
-        spinner = new Spinner<String>();
-        // wartość wyjsciowa spinnera
-        valueFactory.setValue("M");
-        spinner.setValueFactory(valueFactory);
+    void onBtnNadajPaczkę(ActionEvent event) throws SQLException, ClassNotFoundException {
+        String adresOdbiorcy =  inputAdrOdb.getText().toString();
+    // todo wywala błąd że nie ma kolumny o nazwie klienta
+// todo  size jest jako tekst, nie dałem rady zriobic cspinnera ani "listy" :C
+        try {
+            String st1 = "SELECT idClient FROM clients where ImieNazwisko="+ inputOdbiorca.getText()+";";
+            String st2 = "SELECT idAutomat FROM automat where adres="+adresOdbiorcy+";";
+            ResultSet rs1 = dbUtil.dbExecuteQuery(st1);
+            ResultSet rs2 = dbUtil.dbExecuteQuery(st2);
+
+            KlientController.packagesDAO.insertNewPack(inputSize.getText(),rs1.toString(),rs2.toString(),idNadawcy.getText(),inputPaczNad.getText());
+
+        }catch (SQLException e){
+            consoleTextArea.appendText("Error occurred while INSERT Operation.");
+            throw  e;
+        }
+
+    }
+    @FXML
+    void onBtnPickUp(ActionEvent event) throws SQLException, ClassNotFoundException {
+        // todo działa!!!
+        try{
+            KlientController.packagesDAO.updatePickUp(idPickUp.getText());
+        }catch (SQLException e){
+            consoleTextArea.appendText("Error occurred while update Operation.");
+            throw e;
+        }
     }
 
 // todo inserty dla dodawania paczek
@@ -257,6 +283,10 @@ public class KlientController {
         assert inputPaczNad != null : "fx:id=\"inputPaczNad\" was not injected: check your FXML file 'KlientView.fxml'.";
         assert btnNadajPaczke != null : "fx:id=\"btnNadajPaczke\" was not injected: check your FXML file 'KlientView.fxml'.";
         assert paczkiOdebraneTable != null : "fx:id=\"paczkiOdebraneTable\" was not injected: check your FXML file 'KlientView.fxml'.";
+        assert idPickUp != null : "fx:id=\"idPickUp\" was not injected: check your FXML file 'KlientView.fxml'.";
+        assert btnPickUp != null : "fx:id=\"btnPickUp\" was not injected: check your FXML file 'KlientView.fxml'.";
+        assert idNadawcy != null : "fx:id=\"idNadawcy\" was not injected: check your FXML file 'KlientView.fxml'.";
+        assert inputSize != null : "fx:id=\"inputSize\" was not injected: check your FXML file 'KlientView.fxml'.";
 
     }
 }
