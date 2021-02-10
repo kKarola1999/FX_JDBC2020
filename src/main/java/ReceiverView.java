@@ -3,6 +3,9 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * Klasa przechowująca dane z bazy dancych odbiorcy. Wykorzystywana do tworzenia podglądu paczek do odbioru.
+ */
 public class ReceiverView {
 
     private IntegerProperty idPackages;

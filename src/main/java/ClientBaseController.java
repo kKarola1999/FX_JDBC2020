@@ -1,12 +1,15 @@
-import java.net.URL;
-import java.sql.SQLException;
-import java.util.ResourceBundle;
-
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+
+/**
+ * Kontroler sceny ClientBase
+ */
 public class ClientBaseController {
 
     @FXML
@@ -27,6 +30,12 @@ public class ClientBaseController {
     private void populateClientBase(ObservableList<ClientBase> clientBaseData) {
         clientBase.setItems(clientBaseData);
     }
+
+    /**
+     * Metoda tworząca tabelę z wpyisanym ID oraz imionami i nazwiskami klientów.
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     @FXML
     void initialize() throws SQLException, ClassNotFoundException {
         assert clientBase != null : "fx:id=\"clientBase\" was not injected: check your FXML file 'ClientBase.fxml'.";

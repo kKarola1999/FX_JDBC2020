@@ -24,7 +24,11 @@ public class startController {
         @FXML
         private Button idFirma;
 
-        @FXML
+    /**
+     * Po naciśnięciu guzika Firma, zostanie otwarte osobne okno przeznaczone dla pracowników firmy kurierskiej.
+     * @param event
+     */
+    @FXML
         void onFirmaButton(ActionEvent event) {
             Parent root;
             try {
@@ -42,9 +46,12 @@ public class startController {
             }
         }
 
+    /**
+     * Po nacisnięciu guzika Klient, zopstanie otwarty widok przeznaczony dla klientów.
+     * @param event
+     */
 
-
-        @FXML
+    @FXML
         void onKlientButton(ActionEvent event) {
             Parent root;
             try {

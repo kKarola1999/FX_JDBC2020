@@ -174,7 +174,7 @@
                                         <Button fx:id="btnPickUp" mnemonicParsing="false" onAction="#onBtnPickUp" prefHeight="26.0" prefWidth="131.0" text="Odbierz paczkę " BorderPane.alignment="CENTER" />
                                     </right>
                                     <left>
-                                        <Button fx:id="btnNadajPaczke" mnemonicParsing="false" onAction="#onBtnNadajPaczkę" prefHeight="26.0" prefWidth="148.0" text="Nadaj paczkę" textAlignment="CENTER" BorderPane.alignment="CENTER" />
+                                        <Button fx:id="btnNadajPaczke" mnemonicParsing="false" onAction="#onBtnNadajPaczke" prefHeight="26.0" prefWidth="148.0" text="Nadaj paczkę" textAlignment="CENTER" BorderPane.alignment="CENTER" />
                                     </left>
                                 </BorderPane>
                             </children>

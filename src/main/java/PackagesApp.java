@@ -10,6 +10,11 @@ public class PackagesApp extends Application {
 
     private static Scene scene;
 
+    /**
+     * Inicjalizacja aplikacji, wyswietlanie ekranu startowego
+     * @param stage
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException {
 

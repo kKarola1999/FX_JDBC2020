@@ -1,18 +1,16 @@
-import java.net.URL;
-import java.sql.SQLException;
-import java.util.ResourceBundle;
-
 import controller.DBUtil;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+
+/**
+ * Kontroler sceny FiramView
+ */
 public class FirmaController {
 
     @FXML
@@ -109,6 +107,13 @@ public class FirmaController {
     private DBUtil dbUtil;
     private PackagesDAO packagesDAO;
 
+    /**
+     * Metoda obsłuhująca guizk logowania, sprawdza czy isnieje użytkownik o podanycm loginie i haśle.
+     * Odblokowuje inne guziki jeśli logowanie się powiodło.
+     * @param event
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     @FXML
     void connectButtonPressed(ActionEvent event) throws SQLException, ClassNotFoundException {
 
@@ -129,6 +134,11 @@ public class FirmaController {
 
     }
 
+    /**
+     * Metoda obługująca guzik wylogowywujący. Zrywa połączenie aplikacji z bazą danych. Blokuje inne guziki od zaloguj się.
+     * @param event
+     * @throws SQLException
+     */
     @FXML
     void disconnectButtonPressed(ActionEvent event) throws SQLException {
         dbUtil.dbDisconnect();
@@ -141,6 +151,12 @@ public class FirmaController {
         sendButton.setDisable(true);
     }
 
+    /**
+     * Metoda obsługująca guzik statystyki, wyświeta dane z zysków dla podanego dnia oraz automatu.
+     * @param event
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     @FXML
     void onStatystykaClick(ActionEvent event) throws SQLException, ClassNotFoundException {
 
@@ -157,6 +173,12 @@ public class FirmaController {
 
     }
 
+    /**
+     * Metoda obsługująca guzik pokazywania paczek. Wyświetla dabne dotyczące paczek w widoku paczek.
+     * @param event
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     @FXML
     void onPackagesClick(ActionEvent event) throws SQLException, ClassNotFoundException {
         try {
@@ -172,6 +194,14 @@ public class FirmaController {
 
 
     }
+
+    /**
+     *
+     * @param event
+     * Metoda obsługująca guzik zmiany statusu paczki na wysłaną.
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     @FXML
     void onSendButtonClick(ActionEvent event) throws SQLException, ClassNotFoundException {
 
@@ -188,6 +218,13 @@ public class FirmaController {
         }
 
     }
+
+    /**
+     * Metoda obsługującą guzik zmiany statusu paczki na gotową do odbioru.
+     * @param event
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     @FXML
     void onPickupButton(ActionEvent event) throws SQLException, ClassNotFoundException {
         try {

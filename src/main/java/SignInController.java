@@ -38,10 +38,12 @@ public class SignInController {
     private ImageView imageSignInView;
 
 
-
-
-
-
+    /**
+     * metoda służaca do dodawania nowego odbiorcy. Pobiera teskt z pól tekstowych i dodaje do bazydanych.
+     * @param event
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     @FXML
     void onBtnSingIn(ActionEvent event) throws SQLException, ClassNotFoundException {
 

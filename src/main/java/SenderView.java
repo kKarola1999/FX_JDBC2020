@@ -1,7 +1,12 @@
-import javafx.beans.property.*;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
-import javafx.beans.property.*;
-
+/**
+ * Klasa przechoująca dane z bazy danych dotyczących nadawcy. Wykorzystywana przy tworzeniu
+ * podglądu danych dla klienta w tablei paczki nadane.
+ */
 public class SenderView {
     private IntegerProperty idPaczki;
     private StringProperty dataNadania;

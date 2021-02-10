@@ -5,6 +5,9 @@ import javafx.scene.control.TextArea;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Klasa przechowująca sentencje SQL, tworzaąca obiekty klasy: SenderView, ReciverView, Statystyki, PackagesView
+ */
 public class PackagesDAO {
 
     private DBUtil dbUtil;
@@ -18,6 +21,12 @@ public class PackagesDAO {
     public PackagesDAO() {
     }
 
+    /**
+     * Metoda tworząca liste odbiorców
+     * @param rs
+     * @return lista dodanych odbiorców
+     * @throws SQLException
+     */
     private ObservableList<ClientBase> getClientBaseList(ResultSet rs) throws SQLException {
 
         ObservableList<ClientBase> clientBaseList = FXCollections.observableArrayList();
@@ -35,6 +44,12 @@ public class PackagesDAO {
         return clientBaseList;
     }
 
+    /**
+     * Metoda tworząca listę obiektów typu SenderView
+     * @param rs
+     * @return listę obiektów klasy SenderView
+     * @throws SQLException
+     */
     private  ObservableList<SenderView> getSenderList(ResultSet rs) throws SQLException{
         ObservableList<SenderView> senderList = FXCollections.observableArrayList();
         while (rs.next()){
@@ -53,6 +68,12 @@ public class PackagesDAO {
         return  senderList;
     }
 
+    /**
+     * Metoda tworząca listę obiektów klasy Statystyka
+     * @param rs
+     * @return listę obiektów statystykaList
+     * @throws SQLException
+     */
     private ObservableList<Statystyka> getStatystykaList(ResultSet rs) throws SQLException {
 
         ObservableList<Statystyka> statystykaList = FXCollections.observableArrayList();
@@ -73,6 +94,12 @@ public class PackagesDAO {
         return statystykaList;
     }
 
+    /**
+     * Metoda tworząca listę obiektów klasy PackagesView
+     * @param rs
+     * @return listę obiektów packahesList
+     * @throws SQLException
+     */
     private ObservableList<PackagesView> getPackagesList(ResultSet rs) throws SQLException {
 
         ObservableList<PackagesView> packageList = FXCollections.observableArrayList();
@@ -98,7 +125,12 @@ public class PackagesDAO {
 
         return packageList;
     }
-
+    /**
+     * Metoda tworząca listę obiektów klasy ReciverView
+     * @param rs
+     * @return listę obiektów reciverViewList
+     * @throws SQLException
+     */
     private ObservableList<ReceiverView> getReceiverViewList(ResultSet rs) throws SQLException {
 
         ObservableList<ReceiverView> receiverViewList = FXCollections.observableArrayList();
@@ -125,9 +157,13 @@ public class PackagesDAO {
     }
 
 
-
-
-
+    /**
+     * Metoda zawierająca zapytanie do bazy danych pobierająca i przekazująca je do metody worzącej listę obiektów.
+     * @param idName
+     * @return listę obiektów stworzonych przez metode get..
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public ObservableList<SenderView> showAllSender (String idName) throws SQLException, ClassNotFoundException {
 
 
@@ -146,6 +182,15 @@ public class PackagesDAO {
             throw e;
         }
     }
+
+    /**
+     * Metoda zawierająca zapytanie do bazy danych pobierająca i przekazująca je do metody worzącej listę obiektów.
+     * @param date
+     * @param idAutomatu
+     * @return listę obiektów stworzonych przez metode get..
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
 
     public ObservableList<Statystyka> showAllZysk(String date, String idAutomatu) throws SQLException, ClassNotFoundException {
 
@@ -172,6 +217,12 @@ public class PackagesDAO {
 
     }
 
+    /**
+     * Metoda zawierająca zapytanie do bazy danych pobierająca i przekazująca je do metody worzącej listę obiektów.
+     * @return listę obiektów stworzonych przez metode get..
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public ObservableList<PackagesView> showAllPackagesView() throws SQLException, ClassNotFoundException {
 
         String selectStmt = "SELECT * FROM widok_paczek;";
@@ -193,6 +244,13 @@ public class PackagesDAO {
 
     }
 
+    /**
+     * Metoda zawierająca sentencję SQL, zmienia status paczki wysłąnej na paczke gotową do odbioru.
+     * @param name
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+
     public void updatePackages(String name) throws SQLException, ClassNotFoundException {
 
 
@@ -210,6 +268,13 @@ public class PackagesDAO {
             throw e;
         }
     }
+
+    /**
+     * Metoda zwierajaća sentencję SQL, zmieniająca date odbioru paczki na datę aktualną.
+     * @param name
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void updatePickUp(String name) throws SQLException, ClassNotFoundException {
 
 
@@ -228,6 +293,12 @@ public class PackagesDAO {
         }
     }
 
+    /**
+     * Metoda aktualizująca rekordy tabeli paczek.
+     * @param name
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void updatePackagesPickup(String name) throws SQLException, ClassNotFoundException {
 
 
@@ -246,6 +317,13 @@ public class PackagesDAO {
         }
     }
 
+    /**
+     * Metoda zawierająca zapytanie do bazy danych pobierająca i przekazująca je do metody worzącej listę obiektów.
+     * @param idName
+     * @return listę obietków stworzonych przez metodę get.
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public ObservableList<ReceiverView> showAllReceiverView(String idName) throws SQLException, ClassNotFoundException {
 
 
@@ -271,7 +349,12 @@ public class PackagesDAO {
         }
     }
 
-
+    /**
+     * Metoda zawierająca zapytanie do bazy danych pobierająca i przekazująca je do metody worzącej listę obiektów.
+     * @return listę obietków stworzonych przez metodę get.
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public ObservableList<ClientBase> showClientBase() throws SQLException, ClassNotFoundException {
 
         String selectStmt = "SELECT * FROM clientBase;";
@@ -293,9 +376,16 @@ public class PackagesDAO {
     }
 
 
-
-
-
+    /**
+     * Metoda dodająca nowe rekordy do tabeli klientów
+     * @param id
+     * @param imieNazwisko
+     * @param adres
+     * @param email
+     * @param number
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void insertClient(String id, String imieNazwisko, String adres, String email,String number ) throws SQLException, ClassNotFoundException {
 
         StringBuilder sb = new StringBuilder("INSERT INTO clients VALUES('");
@@ -322,6 +412,17 @@ public class PackagesDAO {
         }
 
     }
+
+    /**
+     * Metoda dodająca nowe rekordy do tabeli paczek.
+     * @param size
+     * @param idOdb
+     * @param idAOd
+     * @param idCliNad
+     * @param idANad
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void insertNewPack(String size, String idOdb, String idAOd, String idCliNad,String idANad ) throws SQLException, ClassNotFoundException {
 
             StringBuilder sb = new StringBuilder("INSERT INTO packages VALUES((select count(id_paczki) from widok_paczek)+9,'");

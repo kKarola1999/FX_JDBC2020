@@ -1,6 +1,11 @@
 import javafx.beans.property.*;
 
+/**
+ * Klasa przechowyująca dane dotycznace wysłąnych paczek określonej daty, powiązanej z automatem.
+ * Wykorzystywan do przechowywania danych z bazy danych i tworzenia podglądów w aplikacji
+ */
 public class Statystyka {
+
 
         private IntegerProperty idAutomatNad;
         private StringProperty send_date;

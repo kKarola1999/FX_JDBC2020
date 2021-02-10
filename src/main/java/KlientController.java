@@ -14,6 +14,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * Kontroler sceny KlientView
+ */
 public class KlientController {
 
     @FXML
@@ -139,7 +142,13 @@ public class KlientController {
 
     }
 
-
+    /**
+     * Metoda służaca za obsługe guzika zaloguj się. Sprawdza czy podane dane logowania są prawidłowe
+     * jeśli tak odblokowuje przyciski innych funkcji i łączy sie z bazą.
+     * @param event
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     @FXML
     void connectButtonPressed(ActionEvent event) throws SQLException, ClassNotFoundException {
 
@@ -161,7 +170,11 @@ public class KlientController {
     }
 
 
-
+    /**
+     * Metoda rozłąćzająca aplikację z bazą danych oraz blokująca inne guziki oprócz zaloguj się.
+     * @param event
+     * @throws SQLException
+     */
     @FXML
     void disconnectButtonPressed(ActionEvent event) throws SQLException {
 
@@ -176,6 +189,10 @@ public class KlientController {
 
     }
 
+    /**
+     * Metoda obsługująca guzik dodawania nowego odbiorcy. Otwiera osobne okno.
+     * @param event
+     */
     @FXML
     void onBtnSignIn(ActionEvent event) {
         Parent root;
@@ -192,6 +209,14 @@ public class KlientController {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Metoda obsługująca guzik pokazywania paczek. Po naciśnięciu guzika są piokazywane paczki dla konkretengo numeru
+     * ID klienta.
+     * @param event
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
      @FXML
     void onBtnShowPack(ActionEvent event) throws SQLException, ClassNotFoundException {
         try {
@@ -211,6 +236,10 @@ public class KlientController {
 
     }
 
+    /**
+     * Metoda obśługująca guzik spisu odbiorców, otwiera osbne okno ze spisem dodanych odbiorców.
+     * @param event
+     */
     @FXML
     void onClientBaseClick(ActionEvent event) {
         Parent root;
@@ -237,16 +266,9 @@ public class KlientController {
 
 
     @FXML
-    void onBtnNadajPaczkę(ActionEvent event) throws SQLException, ClassNotFoundException {
-        //String adresOdbiorcy =  inputAdrOdb.getText();
-    // todo wywala błąd że nie ma kolumny o nazwie klienta
-// todo  size jest jako tekst, nie dałem rady zriobic cspinnera ani "listy" :C
-        try {
-            //String st1 = "(SELECT idClient FROM clients where ImieNazwisko='"+ inputOdbiorca.getText()+"')";
-            //String st2 = "(SELECT idAutomat FROM automat where adres='"+adresOdbiorcy+"')";
-            //ResultSet rs1 = dbUtil.dbExecuteQuery(st1);
-            //ResultSet rs2 = dbUtil.dbExecuteQuery(st2);
+    void onBtnNadajPaczke(ActionEvent event) throws SQLException, ClassNotFoundException {
 
+        try {
             packagesDAO.insertNewPack(inputSize.getText(),inputOdbiorca.getText(),inputAdrOdb.getText(),inputUserID.getText(),inputPaczNad.getText());
 
         }catch (SQLException e){
@@ -257,7 +279,7 @@ public class KlientController {
     }
     @FXML
     void onBtnPickUp(ActionEvent event) throws SQLException, ClassNotFoundException {
-        // todo działa!!!
+
         try{
             KlientController.packagesDAO.updatePickUp(idPickUp.getText());
         }catch (SQLException e){
@@ -266,9 +288,7 @@ public class KlientController {
         }
     }
 
-// todo inserty dla dodawania paczek
-// todo inserty nowy użytkownik
-// todo odbior paczki widok i update (podaj id paczki i w tedy dodaj date odbioru)
+
 
     @FXML
     void initialize() {

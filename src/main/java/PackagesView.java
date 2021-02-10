@@ -1,7 +1,9 @@
 import javafx.beans.property.*;
 
 public class PackagesView {
-
+    /**
+     * Klasa przechowująca dane z bazy danych, wykorzystywana do tworzenia widoków dla firmy w aplikacji.
+     */
 
     private IntegerProperty idPackages;
     private StringProperty size;
