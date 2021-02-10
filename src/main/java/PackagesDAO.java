@@ -81,7 +81,7 @@ public class PackagesDAO {
 
             Statystyka s = new Statystyka();
             s.setIdAutomatNad(rs.getInt("idAutomatNad"));
-            s.setSend_date(rs.getString("count(send_date)"));
+            s.setSend_date(rs.getString("count(idPackages)"));
             s.setZysk_paczki(rs.getDouble("sum(zysk_paczki)"));
 
 
@@ -194,7 +194,7 @@ public class PackagesDAO {
     public ObservableList<SenderView> showAllSender (String idName) throws SQLException, ClassNotFoundException {
 
 
-        StringBuilder sb = new StringBuilder("SELECT * FROM widok_nadawcy where obiorca='");
+        StringBuilder sb = new StringBuilder("SELECT * FROM widok_nadawcy where nadawca='");
         sb.append(idName);
         sb.append("';");
         String insertStmt = sb.toString();
@@ -212,7 +212,7 @@ public class PackagesDAO {
 
     public ObservableList<Statystyka> showAllZysk(String date, String idAutomatu) throws SQLException, ClassNotFoundException {
 
-        StringBuilder sb = new StringBuilder("select idAutomatNad,count(send_date),sum(zysk_paczki) from statystyka where idAutomatNad='");
+        StringBuilder sb = new StringBuilder("select distinct(idAutomatNad), count(idPackages),sum(zysk_paczki) from statystyka where idAutomatNad='");
         sb.append(idAutomatu);
         sb.append("'and send_date='");
         sb.append(date);
@@ -313,7 +313,7 @@ public class PackagesDAO {
 
 
 
-        StringBuilder sb = new StringBuilder("SELECT * FROM widok_odbiorcy where nadawca='");
+        StringBuilder sb = new StringBuilder("SELECT * FROM widok_odbiorcy where odbiorca='");
         sb.append(idName);
         sb.append("';");
         String insertStmt = sb.toString();
@@ -408,7 +408,7 @@ public class PackagesDAO {
     }
     public void insertNewPack(String size, String idOdb, String idAOd, String idCliNad,String idANad ) throws SQLException, ClassNotFoundException {
 
-            StringBuilder sb = new StringBuilder("INSERT INTO packages VALUES((select count(idSlot) from slots)+7,'");
+            StringBuilder sb = new StringBuilder("INSERT INTO packages VALUES((select count(id_paczki) from widok_paczek)+9,'");
             sb.append(size);
             sb.append("',null, curdate(), null, null, null,'");
             sb.append(idOdb);

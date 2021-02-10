@@ -113,7 +113,7 @@ public class DBUtil {
             stmt.executeUpdate(sqlStmt);
 
         } catch (SQLException e) {
-            consoleTextArea.appendText("Problem occurred at executeUpdate operation. \n");
+            consoleTextArea.appendText("\nToo much packeges\n Poczekaj na zwolnienie miejsca \n");
             throw e;
         } finally {
             if (stmt != null) {
